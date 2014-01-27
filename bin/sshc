@@ -1,0 +1,5 @@
+#!/bin/bash
+
+python $HOME/Library/PyTools/sshc.py -c $HOME/.sshcrc $*
+exit $?
+
