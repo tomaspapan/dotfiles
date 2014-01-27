@@ -113,9 +113,9 @@ function precmd {
         # Bash
         if [[ $PROFILE_SHELL = 'bash' ]]; then
                 if [ ${USER} == "root" ]; then
-                        export PS1="${prefix}\n# "
+                        export PS1="${prefix}\n${RED}#${C_RESET} "
                 else
-                        export PS1="${prefix}\n\$ "
+                        export PS1="${prefix}\n${CYAN}\$${C_RESET} "
                 fi
                 echo -ne "\033]0;${title}\007"
 
