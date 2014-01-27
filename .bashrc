@@ -297,6 +297,7 @@ then
         alias vim='mvim -v'
         alias vi='mvim -v'
         export GIT_EDITOR='mvim -v'
+        export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 fi
 
 if [ `hostname -s` '==' "r2d2" ];
