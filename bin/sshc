@@ -1,5 +1,5 @@
 #!/bin/bash
 
-python $HOME/Library/PyTools/sshc.py -c $HOME/.sshcrc $*
+python2 $HOME/Library/PyTools/sshc.py -c $HOME/.sshcrc $*
 exit $?
 
