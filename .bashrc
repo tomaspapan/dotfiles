@@ -113,7 +113,7 @@ function precmd {
         # Bash
         if [[ $PROFILE_SHELL = 'bash' ]]; then
                 if [ ${USER} == "root" ]; then
-                        export PS1="${prefix}\n${GREEN}${HOSTNAME} ${RED}#${C_RESET} "
+                        export PS1="${prefix}\n${RED}${HOSTNAME} ${RED}#${C_RESET} "
                 else
                         export PS1="${prefix}\n${GREEN}${HOSTNAME} ${CYAN}\$${C_RESET} "
                 fi
