@@ -248,7 +248,7 @@ function resize()
 }
 
 # aliases
-
+alias ls='ls --color=auto'
 alias ll='ls -l'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
 alias fperm="find . -type f -exec chmod 0644 '{}' \;"
