@@ -1,6 +1,4 @@
-# Tomas Papan bashrc
-# 2012
-
+# Tomas Papan's bashrc
 
 if [[ $- != *i* ]] ; then
 	# Shell is non-interactive.  Be done now!
@@ -58,13 +56,24 @@ fi
 
 # functions
 
+function __encrypt_file {
+        IN="$1"
+        OUT="$2"
+        gpg2 -ca --cipher-algo aes256 -o "$OUT" "$IN"
+}
+
+function __decrypt_file {
+        IN="$1"
+        OUT="$2"
+        gpg2 -da -o "$OUT" "$IN"
+}
+
 function prompt {
 	if [[ ${EUID} == 0 ]] ; then
         	export PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
 	else
         	export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
 	fi
-
 }
 
 
@@ -268,6 +277,8 @@ alias anakin="open vnc://anakin:5901"
 alias vnc="vncserver -geometry 1600x1050"
 alias web="__backup web $@"
 alias backup="__backup backup $@"
+alias encrypt_file="__encrypt_file $@"
+alias decrypt_file="__decrypt_file $@"
 alias update='sudo emerge -NDuvaq world ; sudo emerge --depclean -a ; sudo revdep-rebuild ; sudo eclean-dist -d'
 alias s='cat /etc/motd'
 alias c='tmux a'
