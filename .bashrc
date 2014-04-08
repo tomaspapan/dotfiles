@@ -288,7 +288,7 @@ alias snip='cd ~/Dropbox/snippets && vi .'
 alias reload='source ~/.bashrc'
 alias bye='exit'
 alias sha1check='openssl sha1 '
-alias docpad-generate='node_modules/docpad/bin/docpad generate --env static'
+alias docpad-run='node_modules/docpad/bin/docpad run'
 
 
 # exports
