@@ -112,10 +112,6 @@ function precmd {
         if [ ${USER} == "root" ]; then
                 local C_USER=$RED
         fi
-        if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-                local C_USER=$GREEN
-        fi
-
         local basename=$(basename "$target")
         # local pathReversed=$(echo -n $target | split '/' | sed '1!G;h;$!d' | join '\\\\')
         local title="${basename}${separator}${user}${separator}${target}$(git_prompt)"
