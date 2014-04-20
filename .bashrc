@@ -7,6 +7,8 @@ fi
 
 # global variables
 
+HOSTNAME=`hostname -s`
+
 # Shell
 if test -n "$ZSH_VERSION"; then
         export PROFILE_SHELL='zsh'
@@ -103,7 +105,7 @@ function git_prompt_color {
 
 
 function precmd {
-        local separator=':'
+        local separator=' '
         local time=$(date +%H:%M:%S)
         local target=${PWD/$HOME/~}
         local user="${USER}@${HOSTNAME}"
@@ -117,14 +119,14 @@ function precmd {
         local basename=$(basename "$target")
         # local pathReversed=$(echo -n $target | split '/' | sed '1!G;h;$!d' | join '\\\\')
         local title="${basename}${separator}${user}${separator}${target}$(git_prompt)"
-        local prefix="${C_TIME}${time}${C_RESET}${separator}${C_USER}${user}${C_RESET}${separator}${C_PATH}${target}${C_RESET}$(git_prompt_color)"
+        local prefix="${C_TIME}${time}${C_RESET}${separator}${C_USER}${USER}${C_RESET} at ${GREEN}${HOSTNAME}${C_RESET} in ${C_PATH}${target}${C_RESET}$(git_prompt_color)"
 
         # Bash
         if [[ $PROFILE_SHELL = 'bash' ]]; then
                 if [ ${USER} == "root" ]; then
-                        export PS1="${prefix}\n${RED}${HOSTNAME} ${RED}#${C_RESET} "
+                        export PS1="${prefix}\n${RED}#${C_RESET} "
                 else
-                        export PS1="${prefix}\n${GREEN}${HOSTNAME} ${CYAN}\$${C_RESET} "
+                        export PS1="${prefix}\n${CYAN}\$${C_RESET} "
                 fi
                 echo -ne "\033]0;${title}\007"
 
