@@ -303,11 +303,12 @@ if [ `uname -s` '==' "Darwin" ];
 then
         export CLICOLOR=1
         export LSCOLORS=ExFxBxDxCxegedabagacad
+        export GIT_EDITOR='mvim -v'
+        export HOMEBREW_CASK_OPTS="--appdir=/Applications"
         alias ls='ls -GFh'
         alias vim='mvim -v'
         alias vi='mvim -v'
-        export GIT_EDITOR='mvim -v'
-        export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+        alias lsmod='kextstat'
 fi
 
 if [ `hostname -s` '==' "r2d2" ];
