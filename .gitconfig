@@ -1,6 +1,6 @@
 [user]
 	name = Tomas Papan
-	email = tomas.papan@gmail.com
+	email = tomas@papan.sk
 [alias]
         co = checkout
         ci = commit
@@ -28,3 +28,6 @@
         untracked = cyan
 [push]
 	default = matching
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
