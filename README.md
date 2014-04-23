@@ -16,6 +16,7 @@ git pull origin master  --force
 
 ```
 source ~/.bashrc
+vim_setup.sh
 ```
 
 
