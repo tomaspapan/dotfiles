@@ -1,5 +1,3 @@
-dotfiles
-========
 # [Tomas Papan's](http://papan.sk) Dotfiles
 
 ## Install
