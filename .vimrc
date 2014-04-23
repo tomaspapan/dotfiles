@@ -1,9 +1,7 @@
-" shortcuts
-"       zenmode (Ctrl + y + ',')
 
+" operational settings
 set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim
 set laststatus=2
-" operational settings
 syntax on
 set ruler                     " show the line number on the bar
 set more                      " use more prompt
@@ -40,26 +38,18 @@ set wildignore+=*.o,*~,.lo    " ignore object files
 set wildchar=<Tab>
 set wildmenu                  " menu has tab completion
 let maplocalleader=','        " all my macros start with ,
-"set foldmethod=indent        " fold on syntax automagically, always
-"set foldcolumn=2             " 2 lines of column for fold showing, alway
 set backup
 set backupdir=~/.vim/backup,.,~/
 set directory=~/.vim/tmp,~/tmp,.,/tmp
 set confirm
-" Nastavenie súboru viminfo
 set viminfo='50,\"500
 "           |   |
-"           |   + Maximálna veľkosť registru - 500 riadkov
-"           + Ukladanie informácii o max. 50. naposledy editovaných súboroch
+"           |   + maximum size of register - 500 lines
+"           + Information stored about last (max) 50 files
 
-" Nastavenie perzistentného undo
-" Adresár pre ukladanie undo
 set undodir=~/.vim/undodir
-" Nastavenie názvu súboru pre undo - automaticky
 set undofile
-" Počet zmien, ktoré sa dajú vrátiť
 set undolevels=1024
-" Maximálny počet riadkov, ktoré sa dajú uložiť do undo pri reloade bufferu
 set undoreload=65538
 set title
 
