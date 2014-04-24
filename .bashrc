@@ -288,6 +288,8 @@ alias reload='source ~/.bashrc'
 alias bye='exit'
 alias sha1check='openssl sha1 '
 alias docpad-run='node_modules/docpad/bin/docpad run'
+alias edithosts='sudo vim /etc/hosts'
+alias editethers='sudo vim /etc/ethers'
 
 # exports
 
