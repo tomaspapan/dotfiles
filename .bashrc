@@ -10,7 +10,6 @@ fi
 
 HOSTNAME=`hostname -s`
 OS="$(uname -s)"
-export TERM='xterm-256color'
 
 # Shell
 if test -n "$ZSH_VERSION"; then
@@ -324,6 +323,11 @@ if [ "$OS" '==' "Darwin" ]; then
     alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
     alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
     alias installapp='brew cask install'
+fi
+
+if [ `hostname -s` '==' "r2d2" ];
+then
+        export TERM='xterm-256color'
 fi
 
 if [ -f /etc/profile.d/bash-completion.sh ]; then
