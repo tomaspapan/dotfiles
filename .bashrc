@@ -8,6 +8,7 @@ fi
 # global variables
 
 HOSTNAME=`hostname -s`
+export TERM='xterm-256color'
 
 # Shell
 if test -n "$ZSH_VERSION"; then
@@ -308,9 +309,6 @@ then
     alias lsmod='kextstat'
 fi
 
-if [ `hostname -s` '==' "r2d2" ];
-then
-        export TERM='xterm-256color'
 fi
 
 if [ -f /etc/profile.d/bash-completion.sh ]; then
