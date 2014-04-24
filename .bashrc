@@ -1,3 +1,4 @@
+
 # Tomas Papan's bashrc
 
 if [[ $- != *i* ]] ; then
@@ -8,6 +9,7 @@ fi
 # global variables
 
 HOSTNAME=`hostname -s`
+OS="$(uname -s)"
 export TERM='xterm-256color'
 
 # Shell
@@ -297,8 +299,7 @@ export EDITOR='vim'
 
 # host specific
 
-if [ `uname -s` '==' "Darwin" ]; 
-then
+if [ "$OS" '==' "Darwin" ]; then
     export CLICOLOR=1
     export LSCOLORS=ExFxBxDxCxegedabagacad
     export GIT_EDITOR='mvim -v'
@@ -307,8 +308,20 @@ then
     alias vim='mvim -v'
     alias vi='mvim -v'
     alias lsmod='kextstat'
-fi
-
+    # System
+    alias stackhighlightyes='defaults write com.apple.dock mouse-over-hilte-stack -boolean yes ; killall Dock'
+    alias stackhighlightno='defaults write com.apple.dock mouse-over-hilte-stack -boolean no ; killall Dock'
+    alias showallfilesyes='defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder'
+    alias showallfilesno='defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder'
+    alias autoswooshyes='defaults write com.apple.Dock workspaces-auto-swoosh -bool YES ; killall Dock'
+    alias autoswooshno='defaults write com.apple.Dock workspaces-auto-swoosh -bool NO ; killall Dock'
+    alias nodesktopicons='defaults write com.apple.finder CreateDesktop -bool false'
+    # MD5
+    alias md5sum='md5 -r'
+    # Applications
+    alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
+    alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
+    alias installapp='brew cask install'
 fi
 
 if [ -f /etc/profile.d/bash-completion.sh ]; then
