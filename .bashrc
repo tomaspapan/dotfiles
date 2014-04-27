@@ -6,12 +6,10 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-# global variables
+# global variables -------------------------------------------------------------
 
 HOSTNAME=`hostname -s`
 OS="$(uname -s)"
-
-source ~/.functions.sh
 
 # Shell
 if test -n "$ZSH_VERSION"; then
@@ -29,7 +27,7 @@ else
     export PROFILE_SHELL='sh'
 fi
 
-# Bash
+# Bash -------------------------------------------------------------------------
 if [[ $PROFILE_SHELL = "bash" ]]; then
     # Standard
     export RED="\[\033[0;31m\]"
@@ -59,12 +57,206 @@ elif [[ $PROFILE_SHELL = "zsh" ]]; then
     export C_GIT_CLEAN=$fg[cyan]
     export C_GIT_DIRTY=$fg[red]
 fi
+# functions --------------------------------------------------------------------
 
+function __encrypt_file {
+    IN="$1"
+    OUT="$2"
+    gpg2 -ca --cipher-algo aes256 -o "$OUT" "$IN"
+}
 
-# prompt
-source ~/.prompt.sh
+function __decrypt_file {
+    IN="$1"
+    OUT="$2"
+    gpg2 -da -o "$OUT" "$IN"
+}
 
-# aliases
+function prompt {
+    if [[ ${EUID} == 0 ]] ; then
+        export PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+    else
+        export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] '
+    fi
+}
+
+function __backup {
+    case "$1" in 
+        "backup")
+            URL='/home/morpheus/backup/'
+            ;;
+        "web")
+            URL='/home/pub/Papan.sk/'
+            ;;
+        *)
+            echo "Unknown Error. Ask Microsoft"
+    esac
+    case "$2" in
+        "pull")
+            scp -P 7777 -r "morpheus@papan.sk:$URL/\"$3\"" .
+            ;;
+
+        "push")
+            scp -P 7777 -r "$3" morpheus@papan.sk:$URL 
+            if [ "$1" == "web" ] 
+            then 
+                echo "http://papan.sk/share/$3" 
+            fi
+            ;;
+        "list")
+            ssh -p 7777 morpheus@papan.sk "cd $URL && du -ms *" 
+            if [ $? -ne 0 ]; then
+                echo "There is nothing!"
+            fi
+            ;;
+        "rm")
+            ssh -p 7777 morpheus@papan.sk "cd $URL && rm -rf \"$3\""
+            ;;
+        *)
+            echo "Wrong option"
+            echo "commands"
+            echo "pull <remote target> <destination>"
+            echo "push <target> <remote destination>"
+            echo "list"
+            echo "rm <remote target>"
+            ;;
+    esac
+}
+
+function flac_to_alac()
+{
+    mkdir alac;
+    for f in *.flac
+    do
+            ffmpeg -i "$f" -acodec alac "alac/${f%.flac}.m4a"
+    done
+}
+
+function flac_to_mp3()
+{
+    mkdir mp3;
+    for f in *.flac
+    do
+            ffmpeg -i "$f" -ab 196k -ac 2 -ar 48000 "mp3/${f%.flac}.mp3"
+    done
+}
+
+function flac_to_320_mp3()
+{
+    mkdir mp3_320;
+    for f in *.flac
+    do
+            ffmpeg -i "$f" -ab 320k -ac 2 "mp3_320/${f%.flac}.mp3"
+    done
+}
+
+function genpasswd() 
+{
+    local l=$1
+    [ "$l" == "" ] && l=20
+    tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+}
+
+function timer()
+{
+    notify="/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
+    sleep $1 && $notify -title 'Terminal Notifier' -message $2
+}
+
+function kernel-compile()
+{
+    cd /kernel/linux
+    mv .config ../
+    make mrproper
+    mv ../.config .
+    make oldconfig
+    make menuconfig
+    make -j9
+
+    echo -e "\nKernel is compiled. Please install it (and modules too)"
+    echo -e "\n# make install"
+    echo -e "\n# make modules_install"
+}
+
+function notify()
+{
+    TIME=$1
+    MSG=$2
+
+    sleep $TIME
+
+    /Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message $MSG -title 'terminal'
+}
+
+function resize()
+{
+    RESIZE=$1
+    mkdir resize
+    for pic in *
+    do
+            convert -resize $RESIZE "$pic" "resize/$pic"
+    done
+}
+
+# prompt -----------------------------------------------------------------------
+
+function git_prompt {
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        return 0
+    fi
+
+    echo ":$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')"
+}
+
+function git_prompt_color {
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        return 0
+    fi
+
+    local git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+
+    if git diff --quiet 2>/dev/null >&2; then
+        local git_color=$C_GIT_CLEAN
+    else
+        local git_color=$C_GIT_DIRTY
+    fi
+
+    echo ":${git_color}${git_branch}${C_RESET}"
+}
+
+function precmd {
+    local separator=' '
+    local time=$(date +%H:%M:%S)
+    local target=${PWD/$HOME/~}
+    local user="${USER}@${HOSTNAME}"
+    if [ ${USER} == "root" ]; then
+        local C_USER=$RED
+    fi
+    local basename=$(basename "$target")
+    # local pathReversed=$(echo -n $target | split '/' | sed '1!G;h;$!d' | join '\\\\')
+    local title="${basename}${separator}${user}${separator}${target}$(git_prompt)"
+    local prefix="${C_TIME}${time}${C_RESET}${separator}${C_USER}${USER}${C_RESET} at ${GREEN}${HOSTNAME}${C_RESET} in ${C_PATH}${target}${C_RESET}$(git_prompt_color)"
+
+    # Bash
+    if [[ $PROFILE_SHELL = 'bash' ]]; then
+        if [ ${USER} == "root" ]; then
+            export PS1="${prefix}\n${RED}#${C_RESET} "
+        else
+            export PS1="${prefix}\n${CYAN}\$${C_RESET} "
+        fi
+        echo -ne "\033]0;${title}\007"
+
+        # ZSH
+    else
+        export PROMPT="${prefix}
+        $ "     # zsh
+        # echo -ne "\e]1;${title}\a"
+    fi
+}
+
+export PROMPT_COMMAND=precmd
+
+# aliases ----------------------------------------------------------------------
+
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
@@ -100,7 +292,7 @@ alias docpad-run='node_modules/docpad/bin/docpad run'
 alias edithosts='sudo vim /etc/hosts'
 alias editethers='sudo vim /etc/ethers'
 
-# exports
+# exports ----------------------------------------------------------------------
 
 export PATH=$PATH:~/bin:~/android/platform-tools:/usr/local/share/npm/bin
 export HISTFILESIZE=10000
@@ -108,7 +300,7 @@ export SVN_EDITOR='vim'
 export GIT_EDITOR='vim'
 export EDITOR='vim'
 
-# host specific
+# host specific ----------------------------------------------------------------
 
 if [ "$OS" '==' "Darwin" ]; then
     export CLICOLOR=1
