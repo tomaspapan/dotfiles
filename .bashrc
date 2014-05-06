@@ -332,6 +332,11 @@ then
         export TERM='xterm-256color'
 fi
 
+if [ `hostname -s` '==' "ul001174" ];
+then
+        export TERM='xterm-256color'
+fi
+
 if [ -f /etc/profile.d/bash-completion.sh ]; then
         source /etc/profile.d/bash-completion.sh
 fi
