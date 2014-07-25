@@ -101,7 +101,7 @@ if has("gui_running")
     set columns=120
 end
 
-set background=dark
+set background=light
 colorscheme solarized      " macvim == win
 
 set backupskip=/tmp/*,/private/tmp/*" 
