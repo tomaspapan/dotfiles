@@ -130,6 +130,5 @@ endfunction
 "nerdtree
 let NERDTreeQuitOnOpen=1
 
-setlocal spell spelllang=en_us
 
 
