@@ -296,7 +296,7 @@ alias editethers='sudo vim /etc/ethers'
 
 # exports ----------------------------------------------------------------------
 
-export PATH=$PATH:~/bin:~/android/platform-tools:/usr/local/share/npm/bin
+export PATH=$PATH:~/bin:~/android/sdk/platform-tools:/:~/android/sdk/tools:usr/local/share/npm/bin
 export HISTFILESIZE=10000
 export SVN_EDITOR='vim'
 export GIT_EDITOR='vim'
