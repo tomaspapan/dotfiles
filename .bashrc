@@ -228,13 +228,14 @@ function precmd {
     local time=$(date +%H:%M:%S)
     local target=${PWD/$HOME/~}
     local user="${USER}@${HOSTNAME}"
+    local virt=`[ ${VIRTUAL_ENV} ] && echo ":${VIRTUAL_ENV##/*/}" || echo ""`
     if [ ${USER} == "root" ]; then
         local C_USER=$RED
     fi
     local basename=$(basename "$target")
     # local pathReversed=$(echo -n $target | split '/' | sed '1!G;h;$!d' | join '\\\\')
     local title="${basename}${separator}${user}${separator}${target}$(git_prompt)"
-    local prefix="${C_TIME}${time}${C_RESET}${separator}${C_USER}${USER}${C_RESET} at ${GREEN}${HOSTNAME}${C_RESET} in ${C_PATH}${target}${C_RESET}$(git_prompt_color)"
+    local prefix="${C_TIME}${time}${C_RESET}${separator}${C_USER}${USER}${C_RESET} at ${GREEN}${HOSTNAME}${C_RESET} in ${C_PATH}${target}${C_RESET}$(git_prompt_color)${virt}"
 
     # Bash
     if [[ $PROFILE_SHELL = 'bash' ]]; then
