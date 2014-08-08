@@ -78,7 +78,7 @@ map <LocalLeader>b :call BufferList()<CR>
 map <LocalLeader>n :NERDTreeToggle<CR>  
 map <LocalLeader>d :call DarkTheme()<CR>  
 map <LocalLeader>l :call LightTheme()<CR>  
-map <LocalLeader>m :call MirecTheme()<CR>  
+map <LocalLeader>m :call SmyckTheme()<CR>  
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
@@ -123,8 +123,8 @@ function! LightTheme()
         colorscheme solarized
 endfunction
 
-function! MirecTheme()
-        colorscheme mirec
+function! SmyckTheme()
+        colorscheme smyck
 endfunction
 
 "nerdtree
