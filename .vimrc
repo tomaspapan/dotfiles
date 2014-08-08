@@ -72,6 +72,7 @@ let Tlist_File_Fold_Auto_Close = 1
 " tabs
 " (LocalLeader is ",")
 map <LocalLeader>C  :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q<cr><cr>
+map <LocalLeader>C  :ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
 map <LocalLeader>r :e ~/.vimrc<cr>
 map <LocalLeader>t :e ~/TODO<cr>
 map <LocalLeader>b :call BufferList()<CR>  
@@ -79,6 +80,8 @@ map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>d :call DarkTheme()<CR>  
 map <LocalLeader>l :call LightTheme()<CR>  
 map <LocalLeader>m :call SmyckTheme()<CR>  
+map <LocalLeader>s :call SpellcheckON()<cr>
+map <LocalLeader>x :call SpellcheckOFF()<cr>
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
@@ -125,6 +128,14 @@ endfunction
 
 function! SmyckTheme()
         colorscheme smyck
+endfunction
+
+function! SpellcheckON()
+        setlocal spell spelllang=en_us
+endfunction
+
+function! SpellcheckOFF()
+        set nospell
 endfunction
 
 "nerdtree
