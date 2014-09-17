@@ -294,6 +294,7 @@ alias docpad-static='node_modules/docpad/bin/docpad generate --env static'
 alias docpad-gen='OK=0; until [ $OK -ne 0 ]; do node_modules/docpad/bin/docpad generate --env static | grep thumb | grep queue; OK=$?; done'
 alias edithosts='sudo vim /etc/hosts'
 alias editethers='sudo vim /etc/ethers'
+alias nsn='ssh -p 7777 morpheus@papan.sk "virsh --connect qemu:///system start nsn"; wait_for_host.sh nsn 30 && ssh nsn' 
 
 # exports ----------------------------------------------------------------------
 
