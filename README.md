@@ -8,7 +8,7 @@
 cd ~
 rm ~/.bashrc
 git init
-git remote add origin https://github.com/tomaspapan/dotfiles.git
+git remote add origin https://gitlab.papan.sk/morpheus/dotfiles.git
 git pull origin master  --force
 git branch --set-upstream master origin/master
 ```
