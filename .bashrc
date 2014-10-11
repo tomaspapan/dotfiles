@@ -197,6 +197,13 @@ function resize()
     done
 }
 
+function brewremovewithdep()
+{
+    keg=$1
+    brew rm $keg
+    brew rm $(join <(brew leaves) <(brew deps $keg))
+}
+
 # prompt -----------------------------------------------------------------------
 
 function git_prompt {
