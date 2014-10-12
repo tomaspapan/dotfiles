@@ -322,6 +322,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias vi='mvim -v'
     alias lsmod='kextstat'
     alias yass='VBoxManage startvm yass > /dev/null 2>&1; wait_for_host.sh yass 30 && ssh yass'
+    alias dnsflush='sudo killall -HUP mDNSResponder'
     # System
     alias stackhighlightyes='defaults write com.apple.dock mouse-over-hilte-stack -boolean yes ; killall Dock'
     alias stackhighlightno='defaults write com.apple.dock mouse-over-hilte-stack -boolean no ; killall Dock'
