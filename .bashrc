@@ -43,7 +43,7 @@ if [[ $PROFILE_SHELL = "bash" ]]; then
     # Custom
     export C_RESET='\[\e[0m\]'
     export C_TIME=$PURPLE
-    export C_USER=$BLUE
+    export C_USER=$CYAN
     export C_PATH=$YELLOW
     export C_GIT_CLEAN=$CYAN
     export C_GIT_DIRTY=$RED
