@@ -10,7 +10,7 @@ rm ~/.bashrc
 git init
 git remote add origin https://gitlab.papan.sk/morpheus/dotfiles.git
 git pull origin master  --force
-git branch --set-upstream master origin/master
+git branch --set-upstream-to origin/master
 ```
 
 ### Tell your system to load the custom configurations
