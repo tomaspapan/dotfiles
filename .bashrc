@@ -337,6 +337,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
     alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
     alias installapp='brew cask install'
+    alias va='vagrant'
     export LC_CTYPE=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 fi
