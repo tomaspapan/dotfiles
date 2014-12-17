@@ -275,6 +275,7 @@ alias docpad-static='node_modules/docpad/bin/docpad generate --env static'
 alias docpad-gen='OK=0; until [ $OK -ne 0 ]; do node_modules/docpad/bin/docpad generate --env static | grep thumb | grep queue; OK=$?; done'
 alias edithosts='sudo vim /etc/hosts'
 alias editethers='sudo vim /etc/ethers'
+alias ipt='iptables -L -v -n'
 
 # exports ----------------------------------------------------------------------
 
