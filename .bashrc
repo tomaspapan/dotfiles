@@ -50,22 +50,7 @@ if [[ $PROFILE_SHELL = "bash" ]]; then
     export BLACK="\[\033[0;38m\]"
     export NO_COLOUR="\[\033[0m\]"
 
-    # Custom
     export C_RESET='\[\e[0m\]'
-    export C_TIME=$PURPLE
-    export C_USER=$CYAN
-    export C_PATH=$YELLOW
-    export C_GIT_CLEAN=$CYAN
-    export C_GIT_DIRTY=$RED
-
-elif [[ $PROFILE_SHELL = "zsh" ]]; then
-    # Custom
-    export C_RESET=$reset_color
-    export C_TIME=$fg[green]
-    export C_USER=$fg[blue]
-    export C_PATH=$fg[yellow]
-    export C_GIT_CLEAN=$fg[cyan]
-    export C_GIT_DIRTY=$fg[red]
 fi
 # functions --------------------------------------------------------------------
 
@@ -210,7 +195,7 @@ function brewremovewithdep()
 
 #HOSTNAME
 env | grep SSH_CLIENT > /dev/null 2>&1
-if  [ $? -eq 0 ]; then HOSTNAME="[${RED}$(hostname -s)${C_RESET}]"
+if  [ $? -eq 0 ]; then HOSTNAME="[${NO_COLOUR}$(hostname -s)${C_RESET}]"
 else HOSTNAME=""; fi
 
 function git_prompt {
