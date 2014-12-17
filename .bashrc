@@ -193,10 +193,17 @@ function brewremovewithdep()
 
 # prompt -----------------------------------------------------------------------
 
-#HOSTNAME
-env | grep SSH_CLIENT > /dev/null 2>&1
-if  [ $? -eq 0 ]; then HOSTNAME="[${NO_COLOUR}$(hostname -s)${C_RESET}]"
-else HOSTNAME=""; fi
+function get_hostname {
+	HOSTNAME=""
+	env | grep SSH_CLIENT > /dev/null 2>&1
+	if  [ $? -eq 1 ]; then HOSTNAME="[${CYAN}$(hostname -s)${C_RESET}]"
+	else
+		 if [ ${USER} == "root" ]; then
+		 	HOSTNAME="[${RED}$(hostname -s)${C_RESET}]"
+		 fi
+	fi
+	echo $HOSTNAME
+}
 
 function git_prompt {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
@@ -219,9 +226,9 @@ function git_prompt_color {
 
 function precmd {
     local target="[${CYAN}${PWD/#$HOME/\~}${C_RESET}]"
-    local prefix="${TITLEBAR}┌─${HOSTNAME}$(git_prompt_color)${target}"
+    local prefix="${TITLEBAR}┌─$(get_hostname)$(git_prompt_color)${target}"
     if [ ${USER} == "root" ]; then
-         export PS1="${prefix}\n└─${RED}▪ ${C_RESET}"
+        export PS1="${prefix}\n└─${RED}▪ ${C_RESET}"
     else
         export PS1="${prefix}\n└─${CYAN}▪ ${C_RESET}"
     fi
