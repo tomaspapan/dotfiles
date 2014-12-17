@@ -196,7 +196,7 @@ function brewremovewithdep()
 function get_hostname {
 	HOSTNAME=""
 	env | grep SSH_CLIENT > /dev/null 2>&1
-	if  [ $? -eq 1 ]; then HOSTNAME="[${CYAN}$(hostname -s)${C_RESET}]"
+	if  [ $? -eq 0 ]; then HOSTNAME="[${CYAN}$(hostname -s)${C_RESET}]"
 	else
 		 if [ ${USER} == "root" ]; then
 		 	HOSTNAME="[${RED}$(hostname -s)${C_RESET}]"
