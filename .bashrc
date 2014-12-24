@@ -313,6 +313,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
     alias installapp='brew cask install'
     alias va='vagrant'
+    alias server='open "http://localhost:8000" && python3 -m http.server'
     export LC_CTYPE=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 fi
