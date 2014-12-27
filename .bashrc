@@ -276,6 +276,11 @@ alias docpad-gen='OK=0; until [ $OK -ne 0 ]; do node_modules/docpad/bin/docpad g
 alias edithosts='sudo vim /etc/hosts'
 alias editethers='sudo vim /etc/ethers'
 alias ipt='iptables -L -v -n'
+alias docker-clean='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
+function __docker-shell() {
+    docker exec -ti $1 bash
+}
+alias docker-shell=__docker-shell
 
 # exports ----------------------------------------------------------------------
 
