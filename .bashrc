@@ -281,6 +281,7 @@ function __docker-shell() {
     docker exec -ti $1 bash
 }
 alias docker-shell=__docker-shell
+alias docker-init='$(boot2docker shellinit)'
 
 # exports ----------------------------------------------------------------------
 
