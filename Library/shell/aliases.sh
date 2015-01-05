@@ -40,4 +40,4 @@ alias docker-cleanall='docker stop $(docker ps -a -q) && docker rm $(docker ps -
 alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias docker-shell=__docker-shell
 alias docker-init='$(boot2docker shellinit)'
-
+alias rtorrent='rtorrent -p 6998-6999'
