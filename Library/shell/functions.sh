@@ -154,3 +154,7 @@ function brewremovewithdep()
 function __docker-shell() {
     docker exec -ti $1 bash
 }
+
+function cp1250toUtf8() {
+    iconv -f WINDOWS-1250 -t UTF-8 < "$1" > tmpfile
+}
