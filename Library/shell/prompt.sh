@@ -23,10 +23,12 @@ function git_prompt_color {
         return 0
     fi
     local git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+    git_remote=$(basename -s .git $(git remote -v | grep fetch | awk '{print $2}') 2>/dev/null)
+    if [ $? -ne 0 ]; then git_remote='local'; fi
     if git diff --quiet 2>/dev/null >&2; then
-        echo "[$git_branch ${GREEN}✓${C_RESET}]"
+        echo "[$git_remote:$git_branch ${GREEN}✓${C_RESET}]"
     else
-        echo "[$git_branch ${RED}✗${C_RESET}]"
+        echo "[$git_remote:$git_branch ${RED}✗${C_RESET}]"
     fi
 }
 
