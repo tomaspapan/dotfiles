@@ -27,9 +27,9 @@ function git_prompt_color {
     if [ $? -ne 0 ]; then git_remote='local '; else git_remote="$git_remote "; fi
     if [ $git_remote == "dotfiles" ]; then git_remote=''; fi
     if git diff --quiet 2>/dev/null >&2; then
-        echo "[$git_remote$git_branch ${GREEN}✓${C_RESET}]"
+        echo "[${CYAN}$git_remote${C_RESET}$git_branch ${GREEN}✓${C_RESET}]"
     else
-        echo "[$git_remote$git_branch ${RED}✗${C_RESET}]"
+        echo "[${CYAN}$git_remote${C_RESET}$git_branch ${RED}✗${C_RESET}]"
     fi
 }
 
