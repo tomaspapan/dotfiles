@@ -71,8 +71,7 @@ let Tlist_File_Fold_Auto_Close = 1
 
 " tabs
 " (LocalLeader is ",")
-map <LocalLeader>C  :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q<cr><cr>
-map <LocalLeader>C  :ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
+map <LocalLeader>c  :!ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
 map <LocalLeader>r :e ~/.vimrc<cr>
 map <LocalLeader>t :e ~/TODO<cr>
 map <LocalLeader>b :call BufferList()<CR>  
