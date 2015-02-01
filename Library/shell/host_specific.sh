@@ -29,13 +29,3 @@ if [ "$OS" '==' "Darwin" ]; then
     export LC_ALL=en_US.UTF-8
 fi
 
-if [ `hostname -s` '==' "r2d2" ];
-then
-        export TERM='xterm-256color'
-fi
-
-if [ `hostname -s` '==' "ul001174" ];
-then
-        export TERM='xterm-256color'
-fi
-
