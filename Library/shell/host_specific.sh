@@ -29,3 +29,7 @@ if [ "$OS" '==' "Darwin" ]; then
     export LC_ALL=en_US.UTF-8
 fi
 
+
+if [ "$OS" '==' "Linux" ]; then
+    export TERM='xterm-256color'
+fi
