@@ -103,6 +103,18 @@ function genpasswd()
     tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
 }
 
+function genpasswds() 
+{
+    local l=$1
+    local t=$2
+    [ "$l" == "" ] && l=20
+    [ "$t" == "" ] && t=10
+    for i in `seq $t` 
+    do
+        tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
+    done
+}
+
 function timer()
 {
     notify="/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
