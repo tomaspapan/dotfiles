@@ -25,6 +25,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
     alias installapp='brew cask install'
     alias server='open "http://localhost:8000" && python3 -m http.server'
+    alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
     export LC_CTYPE=en_US.UTF-8
     export LC_ALL=en_US.UTF-8
 fi
