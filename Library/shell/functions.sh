@@ -170,3 +170,7 @@ function __docker-shell() {
 function cp1250toUtf8() {
     iconv -f WINDOWS-1250 -t UTF-8 < "$1" > tmpfile
 }
+
+function __scan_network() {
+    nmap -sP $1 2> /dev/null | grep report | awk '{print $5}'
+}

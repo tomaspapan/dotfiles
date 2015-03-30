@@ -43,3 +43,4 @@ alias docker-init='$(docker-machine env boot2docker)'
 alias docker-create='docker-machine create -d virtualbox boot2docker'
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
+alias scan_network="__scan_network $@"
