@@ -1,18 +1,15 @@
 
-if [[ $PROFILE_SHELL = "bash" ]]; then
-    # Standard
-    export RED="\[\033[0;31m\]"
-    export RED_BOLD="\[\033[01;31m\]"
-    export BLUE="\[\033[0;34m\]"
-    export CYAN='\[\e[0;36m\]'
-    export PURPLE='\[\e[0;35m\]'
-    export GREEN="\[\033[0;32m\]"
-    export YELLOW="\[\033[0;33m\]"
-    export BLACK="\[\033[0;38m\]"
-    export NO_COLOUR="\[\033[0m\]"
+export RED="\[\033[0;31m\]"
+export RED_BOLD="\[\033[01;31m\]"
+export BLUE="\[\033[0;34m\]"
+export CYAN='\[\e[0;36m\]'
+export PURPLE='\[\e[0;35m\]'
+export GREEN="\[\033[0;32m\]"
+export YELLOW="\[\033[0;33m\]"
+export BLACK="\[\033[0;38m\]"
+export NO_COLOUR="\[\033[0m\]"
 
-    export C_RESET='\[\e[0m\]'
-fi
+export C_RESET='\[\e[0m\]'
 
 function __encrypt_file {
     IN="$1"
