@@ -2,12 +2,19 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull;
+git submodule init
+git submodule update
+
+#git pull origin master;
 
 function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
 		--exclude "README.md" --exclude "LICENSE-MIT.txt" -avh --no-perms . ~;
 	source ~/.bash_profile;
+    
+    mkdir ~/.vim/backup > /dev/null 2>&1
+    mkdir ~/.vim/tmp > /dev/null 2>&1
+    mkdir ~/.vim/undodir > /dev/null 2>&1
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
