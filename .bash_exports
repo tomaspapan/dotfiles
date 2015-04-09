@@ -1,0 +1,23 @@
+
+export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin
+export HISTSIZE=32768
+export HISTFILESIZE=32768
+# Omit duplicates and commands that begin with a space from history.
+export HISTCONTROL='ignoreboth';
+export SVN_EDITOR='vim'
+export GIT_EDITOR='vim'
+export EDITOR='vim'
+
+# colors
+
+export RED="\[\033[0;31m\]"
+export RED_BOLD="\[\033[01;31m\]"
+export BLUE="\[\033[0;34m\]"
+export CYAN='\[\e[0;36m\]'
+export PURPLE='\[\e[0;35m\]'
+export GREEN="\[\033[0;32m\]"
+export YELLOW="\[\033[0;33m\]"
+export BLACK="\[\033[0;38m\]"
+export NO_COLOUR="\[\033[0m\]"
+
+export C_RESET='\[\e[0m\]'

@@ -17,12 +17,7 @@ case $TERM in
         ;;
 esac
 
-export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin
-export HISTFILESIZE=10000
-export SVN_EDITOR='vim'
-export GIT_EDITOR='vim'
-export EDITOR='vim'
-
+. $HOME/.bash_exports
 . $HOME/.bash_functions
 . $HOME/.bash_prompt
 . $HOME/.bash_aliases
