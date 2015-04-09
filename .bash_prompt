@@ -42,6 +42,7 @@ function precmd {
         export PS1="${prefix}\n└─${CYAN}▪ ${C_RESET}"
     fi
     export PS2="└─▪ "
+    export PS3=">>> "
 }
 
 export PROMPT_COMMAND=precmd
