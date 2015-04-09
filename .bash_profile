@@ -26,7 +26,7 @@ export EDITOR='vim'
 . $HOME/.bash_functions
 . $HOME/.bash_prompt
 . $HOME/.bash_aliases
-. $HOME/Library/shell/host_specific.sh
+. $HOME/.bash_os_specific
 
 
 if [ -f /etc/profile.d/bash-completion.sh ]; then
