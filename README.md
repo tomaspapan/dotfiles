@@ -4,20 +4,15 @@
 
 ### Pull the repo into your home directory
 
-``` bash
-cd ~
-rm ~/.bashrc
-git init
-git remote add origin https://gitlab.papan.sk/morpheus/dotfiles.git
-git pull origin master  --force
-git branch --set-upstream-to origin/master
+``` 
+git clone https://gitlab.papan.sk/morpheus/dotfiles.git
+./dotfiles/bootstrap.sh
 ```
 
 ### Tell your system to load the custom configurations
 
 ```
 source ~/.bashrc
-vim_setup.sh
 ```
 
 
