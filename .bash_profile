@@ -23,9 +23,9 @@ export SVN_EDITOR='vim'
 export GIT_EDITOR='vim'
 export EDITOR='vim'
 
-. $HOME/Library/shell/functions.sh
+. $HOME/.bash_functions
 . $HOME/.bash_prompt
-. $HOME/Library/shell/aliases.sh
+. $HOME/.bash_aliases
 . $HOME/Library/shell/host_specific.sh
 
 
