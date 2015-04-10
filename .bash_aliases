@@ -44,3 +44,35 @@ alias docker-create='docker-machine create -d virtualbox boot2docker'
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
 alias scan_network="__scan_network $@"
+
+GRC=`which grc 2>/dev/null`
+if [ "$TERM" != dumb ] && [ -n "$GRC" ]
+then
+    alias colourify="$GRC -es --colour=auto"
+    alias configure='colourify ./configure'
+    alias diff='colourify diff'
+    alias make='colourify make'
+    alias gcc='colourify gcc'
+    alias g++='colourify g++'
+    alias as='colourify as'
+    alias gas='colourify gas'
+    alias ld='colourify ld'
+    alias netstat='colourify netstat'
+    alias ping='colourify ping'
+    alias traceroute='colourify /usr/sbin/traceroute'
+    alias head='colourify head'
+    alias tail='colourify tail'
+    alias dig='colourify dig'
+    alias mount='colourify mount'
+    alias ps='colourify ps'
+    alias mtr='colourify mtr'
+    alias df='colourify df'
+        # Temporary measure until grc upgrades to 1.8 in mainstream homebrew because of 
+        # https://github.com/garabik/grc/issues/3 (does not affect Linux)
+        if [ $(uname) == "Linux" ] || (grc -v |grep "Generic Colouriser 1.8" > /dev/null 2>&1); then
+        alias ifconfig='colourify ifconfig'
+        fi
+        if [ $(uname) == "Linux" ] && [ -r "/usr/share/grc/conf.ifconfig" ]; then
+            alias ip='colourify -c /usr/share/grc/conf.ifconfig ip'
+        fi
+fi
