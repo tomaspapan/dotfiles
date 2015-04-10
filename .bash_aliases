@@ -69,10 +69,10 @@ then
     alias df='colourify df'
         # Temporary measure until grc upgrades to 1.8 in mainstream homebrew because of 
         # https://github.com/garabik/grc/issues/3 (does not affect Linux)
-        if [ $(uname) == "Linux" ] || (grc -v |grep "Generic Colouriser 1.8" > /dev/null 2>&1); then
+        if [ $OS == "Linux" ] || (grc -v |grep "Generic Colouriser 1.8" > /dev/null 2>&1); then
         alias ifconfig='colourify ifconfig'
         fi
-        if [ $(uname) == "Linux" ] && [ -r "/usr/share/grc/conf.ifconfig" ]; then
+        if [ $OS == "Linux" ] && [ -r "/usr/share/grc/conf.ifconfig" ]; then
             alias ip='colourify -c /usr/share/grc/conf.ifconfig ip'
         fi
 fi
