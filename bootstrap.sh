@@ -2,10 +2,11 @@
 
 cd "$(dirname "${BASH_SOURCE}")"
 
+git pull origin master
+
 git submodule init
 git submodule update
 
-git pull origin master
 
 function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
@@ -14,6 +15,10 @@ function doIt() {
     mkdir ~/.vim/backup > /dev/null 2>&1
     mkdir ~/.vim/tmp > /dev/null 2>&1
     mkdir ~/.vim/undodir > /dev/null 2>&1
+
+    if [ ! -f ~/.local/bin/powerline-lint ]; then 
+        pip install --user --editable=$HOME/git/dotfiles/.vim/bundle/powerline
+    fi
 
 	source ~/.bash_profile
 }

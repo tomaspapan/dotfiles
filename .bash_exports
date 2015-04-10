@@ -1,5 +1,5 @@
 
-export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin
+export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin:~/.local/bin
 export HISTSIZE=32768
 export HISTFILESIZE=32768
 # Omit duplicates and commands that begin with a space from history.
