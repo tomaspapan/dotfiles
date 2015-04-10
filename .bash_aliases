@@ -1,4 +1,11 @@
 
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias db="cd ~/Dropbox"
+alias g="git"
+alias h="history"
+alias j="jobs"
+
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
@@ -6,15 +13,12 @@ alias fperm="find . -type f -exec chmod 0644 '{}' \;"
 alias d="du -ms"
 alias dus='for i in *; do du -ms "$i"; done | sort -n'
 alias vi='vim'
-alias myip='curl ifconfig.me'
 alias virsh="virsh --connect qemu:///system"
 alias sa='ssh morpheus@anakin'
 alias ms='pmset sleepnow; logout'
-alias sshw='ssh pntmm_ra@10.50.133.245'
 alias stopmotion_fast='ffmpeg -r 12 -i clip-%d.jpg -b 40M clip.mov'
 alias stopmotion_slow='ffmpeg -r 7 -i clip-%d.jpg -b 25M clip.mov'
 alias cdg='cd ~/git/'
-alias work="open vnc://vpn-r2d2:5901"
 alias anakin="open vnc://anakin:5901"
 alias vnc="vncserver -geometry 1600x1050"
 alias web="__backup web $@"
@@ -26,7 +30,6 @@ alias s='cat /etc/motd'
 alias c='tmux a'
 alias virsh-startall='for host in `virsh list --all | grep -i '"'shut'"' | awk '"'{print \$2}'"'`; do virsh start $host; done'
 alias virsh-stopall='for host in `virsh list --all | grep -i '"'run'"' | awk '"'{print \$2}'"'`; do virsh shutdown $host; done'
-alias snip='cd ~/Google\ Drive/snippets && vi .'
 alias reload='~/dotfiles/bootstrap.sh && source ~/.bashrc'
 alias bye='exit'
 alias sha1check='openssl sha1 '
@@ -76,3 +79,4 @@ then
             alias ip='colourify -c /usr/share/grc/conf.ifconfig ip'
         fi
 fi
+
