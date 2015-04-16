@@ -1,7 +1,6 @@
 
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias db="cd ~/Dropbox"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -46,6 +45,32 @@ alias docker-init='$(docker-machine env dev)'
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
 alias scan_network="__scan_network $@"
+
+
+if [ "$OS" '==' "Darwin" ]; then
+    alias ls='ls -GFh'
+    alias vim='mvim -v'
+    alias vi='mvim -v'
+    alias lsmod='kextstat'
+    alias yass='VBoxManage startvm yass > /dev/null 2>&1; wait_for_host.sh yass 30 && ssh yass'
+    alias dnsflush='sudo discoveryutil udnsflushcaches'
+    # System
+    alias stackhighlightyes='defaults write com.apple.dock mouse-over-hilte-stack -boolean yes ; killall Dock'
+    alias stackhighlightno='defaults write com.apple.dock mouse-over-hilte-stack -boolean no ; killall Dock'
+    alias showallfilesyes='defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder'
+    alias showallfilesno='defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder'
+    alias autoswooshyes='defaults write com.apple.Dock workspaces-auto-swoosh -bool YES ; killall Dock'
+    alias autoswooshno='defaults write com.apple.Dock workspaces-auto-swoosh -bool NO ; killall Dock'
+    alias nodesktopicons='defaults write com.apple.finder CreateDesktop -bool false'
+    # MD5
+    alias md5sum='md5 -r'
+    # Applications
+    alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
+    alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
+    alias installapp='brew cask install'
+    alias server='open "http://localhost:8000" && python3 -m http.server'
+    alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+fi
 
 GRC=`which grc 2>/dev/null`
 if [ "$TERM" != dumb ] && [ -n "$GRC" ]
