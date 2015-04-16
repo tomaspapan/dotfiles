@@ -7,7 +7,7 @@ alias h="history"
 alias j="jobs"
 
 alias ls='ls --color=auto'
-alias ll='ls -l'
+alias ll='ls -la'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
 alias fperm="find . -type f -exec chmod 0644 '{}' \;"
 alias d="du -ms"
