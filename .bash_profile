@@ -8,24 +8,18 @@ fi
 
 export OS="$(uname -s)"
 
-case $TERM in
-    xterm*)
-        TITLEBAR="\[\033]0;\w\007\]"
-        ;;
-    *)
-        TITLEBAR=""
-        ;;
-esac
-
 . $HOME/.bash_exports
 . $HOME/.bash_functions
 . $HOME/.bash_prompt
 . $HOME/.bash_aliases
-. $HOME/.bash_os_specific
 
 
 if [ -f /etc/profile.d/bash-completion.sh ]; then
         source /etc/profile.d/bash-completion.sh
+fi
+
+if [ -f $HOME/.bash_extra ]; then
+    . $HOME/.bash_extra
 fi
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
