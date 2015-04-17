@@ -6,7 +6,6 @@ if [[ $- != *i* ]] ; then
     return
 fi
 
-export OS="$(uname -s)"
 
 . $HOME/.bash_exports
 . $HOME/.bash_functions

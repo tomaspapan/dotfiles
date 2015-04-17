@@ -1,14 +1,14 @@
 
 function get_hostname {
-	HOSTNAME=""
+	local hostname=""
 	env | grep SSH_CLIENT > /dev/null 2>&1
-	if  [ $? -eq 0 ]; then HOSTNAME="[${CYAN}$(hostname -s)${C_RESET}]"
+	if  [ $? -eq 0 ]; then hostname="[${CYAN}${HOSTNAME}${C_RESET}]"
 	else
 		 if [ ${USER} == "root" ]; then
-		 	HOSTNAME="[${RED}$(hostname -s)${C_RESET}]"
+		 	hostname="[${RED}${HOSTNAME}${C_RESET}]"
 		 fi
 	fi
-	echo $HOSTNAME
+	echo $hostname
 }
 
 function git_prompt {
