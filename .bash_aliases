@@ -41,7 +41,7 @@ alias ipt='iptables -L -v -n'
 alias docker-cleanall='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
 alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias docker-shell=__docker-shell
-alias docker-init='$(docker-machine env dev)'
+alias docker-init='eval "$(docker-machine env dev)"'
 alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="8192" dev'
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
