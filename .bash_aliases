@@ -73,31 +73,3 @@ if [ "$OS" '==' "Darwin" ]; then
     alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 fi
 
-GRC=`which grc 2>/dev/null`
-if [ "$TERM" != dumb ] && [ -n "$GRC" ]
-then
-    alias colourify="$GRC -es --colour=auto"
-    alias configure='colourify ./configure'
-    alias diff='colourify diff'
-    alias make='colourify make'
-    alias gcc='colourify gcc'
-    alias g++='colourify g++'
-    alias as='colourify as'
-    alias gas='colourify gas'
-    alias ld='colourify ld'
-    alias netstat='colourify netstat'
-    alias ping='colourify ping'
-    alias traceroute='colourify /usr/sbin/traceroute'
-    alias head='colourify head'
-    alias tail='colourify tail'
-    alias dig='colourify dig'
-    alias mount='colourify mount'
-    alias ps='colourify ps'
-    alias mtr='colourify mtr'
-    alias df='colourify df'
-    alias ifconfig='colourify ifconfig'
-    if [ $OS == "Linux" ] && [ -r "/usr/share/grc/conf.ifconfig" ]; then
-        alias ip='colourify -c /usr/share/grc/conf.ifconfig ip'
-    fi
-fi
-
