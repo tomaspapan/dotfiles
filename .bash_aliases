@@ -46,6 +46,7 @@ alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="81
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
 alias scan_network="__scan_network $@"
+alias pip-update='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 
 
 if [ "$OS" '==' "Darwin" ]; then
