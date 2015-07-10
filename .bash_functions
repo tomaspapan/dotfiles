@@ -159,6 +159,10 @@ function __scan_network() {
     nmap -sP $1 2> /dev/null | grep report | awk '{print $5}'
 }
 
+function __generate_network() {
+    for i in `seq 1 254`; do echo $1$i >> network; done
+}
+
 # Create a new directory and enter it
 function mkd() {
     mkdir -p "$@" && cd "$_";
