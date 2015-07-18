@@ -1,4 +1,4 @@
-export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin:~/.local/bin
+export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin:~/.local/bin:~/go/bin
 export HISTSIZE=32768
 export HISTFILESIZE=32768
 # Omit duplicates and commands that begin with a space from history.
@@ -8,6 +8,7 @@ export GIT_EDITOR='vim'
 export EDITOR='vim'
 export OS="$(uname -s)"
 export HOSTNAME="$(hostname -s)"
+export GOPATH=$HOME/go
 
 # colors
 
