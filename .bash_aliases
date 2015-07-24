@@ -5,6 +5,7 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 
+alias cal='cal --monday'
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
