@@ -4,7 +4,7 @@ function get_hostname {
 	env | grep SSH_CLIENT > /dev/null 2>&1
 	if  [ $? -eq 0 ]; then hostname="[${CYAN}${HOSTNAME}${C_RESET}]"
 	else
-		 if [ ${USER} == "root" ]; then
+		 if [[ ${USER} == "root" ]]; then
 		 	hostname="[${RED}${HOSTNAME}${C_RESET}]"
 		 fi
 	fi
@@ -33,7 +33,7 @@ function git_prompt_color {
 function precmd {
     local target="[${CYAN}${PWD/#$HOME/\~}${C_RESET}]"
     local prefix="${TITLEBAR}┌─$(get_hostname)$(git_prompt_color)${target}"
-    if [ ${USER} == "root" ]; then
+    if [[ ${USER} == "root" ]]; then
         export PS1="${prefix}\n└─${RED}▪ ${C_RESET}"
     else
         export PS1="${prefix}\n└─${CYAN}▪ ${C_RESET}"
