@@ -44,6 +44,7 @@ alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(dock
 alias docker-shell=__docker-shell
 alias docker-init='eval "$(docker-machine env dev)"'
 alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="8192" dev'
+alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk '"'{print \$3}'"')'
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
 alias scan_network="__scan_network $@"
