@@ -7,5 +7,11 @@ alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk 
 
 alias debian='docker run --rm -ti debian:jessie bash'
 alias ubuntu='docker run --rm -ti ubuntu:14.04 bash'
-alias devel='docker run --rm -ti pyrula/devel bash'
+
+function devel {
+    mkdir -p $HOME/docker/devel/workspace > /dev/null 2>&1
+    cd $HOME/docker/devel
+    docker run --name devel -ti -v `pwd`/workspace:/workspace --net host pyrula/devel 
+    if [ $? -ne 0 ]; then docker start -i devel; fi
+}
 
