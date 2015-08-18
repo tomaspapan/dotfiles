@@ -39,12 +39,6 @@ alias docpad-gen='OK=0; until [ $OK -ne 0 ]; do node_modules/docpad/bin/docpad g
 alias edithosts='sudo vim /etc/hosts'
 alias editethers='sudo vim /etc/ethers'
 alias ipt='iptables -L -v -n'
-alias docker-cleanall='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
-alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
-alias docker-shell=__docker-shell
-alias docker-init='eval "$(docker-machine env dev)"'
-alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="8192" dev'
-alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk '"'{print \$3}'"')'
 alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
 alias scan_network="__scan_network $@"
