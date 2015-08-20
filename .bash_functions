@@ -107,9 +107,13 @@ function timer()
 
 function kernel-compile()
 {
+    TAG=${1:-master}
     cd /kernel/linux
     mv .config ../
     make mrproper
+    git fetch
+    git checkout $TAG
+    git pull
     mv ../.config .
     make oldconfig
     make menuconfig
