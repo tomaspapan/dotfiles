@@ -5,8 +5,9 @@ alias docker-init='eval "$(docker-machine env dev)"'
 alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="8192" dev'
 alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk '"'{print \$3}'"')'
 
-alias debian='docker run --rm -ti debian:jessie bash'
-alias ubuntu='docker run --rm -ti ubuntu:14.04 bash'
+alias debian='docker run -v $PWD:/pwd --rm -ti debian:jessie bash'
+alias ubuntu='docker run -v $PWD:/pwd --rm -ti ubuntu:14.04 bash'
+alias alpine='docker run -v $PWD:/pwd --rm -ti alpine:latest sh'
 
 function devel {
     PARAMS=$@
