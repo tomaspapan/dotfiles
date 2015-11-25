@@ -67,7 +67,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
     alias installapp='brew cask install'
     alias server='open "http://localhost:8000" && python3 -m http.server'
-    alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+    alias update='brew update; brew upgrade --all; brew cleanup; npm update -g'
 else
     alias cal='cal --monday'
 fi
