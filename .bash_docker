@@ -12,7 +12,7 @@ alias alpine='docker run -v $PWD:/pwd --rm -ti alpine:latest sh'
 function devel {
     PARAMS=$@
     mkdir -p $HOME/docker/devel/workspace > /dev/null 2>&1
-    docker run --name devel -ti -v $HOME/docker/devel/workspace:/workspace --net host $PARAMS pyrula/devel
+    docker run --name devel -ti -v $HOME/docker/devel/workspace:/workspace -v /etc/localtime:/etc/localtime:ro --net host $PARAMS pyrula/devel
     if [ $? -ne 0 ]; then if [[ $PARAMS == "" ]]; then docker start -i devel; fi; fi
 }
 
