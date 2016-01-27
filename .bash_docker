@@ -16,3 +16,8 @@ function devel {
     if [ $? -ne 0 ]; then if [[ $PARAMS == "" ]]; then docker start -i devel; fi; fi
 }
 
+function archlinux {
+    PARAMS=$@
+    docker run --rm -ti $PARAMS pyrula/archlinux
+}
+
