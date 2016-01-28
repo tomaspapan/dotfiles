@@ -2,7 +2,7 @@ alias docker-cleanall='docker stop $(docker ps -a -q) && docker rm $(docker ps -
 alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
 alias docker-shell=__docker-shell
 alias docker-init='eval "$(docker-machine env dev)"'
-alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="8192" dev'
+alias docker-create='docker-machine create -d virtualbox --virtualbox-memory="8192" --engine-storage-driver=overlay dev'
 alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk '"'{print \$3}'"')'
 
 alias debian='docker run -v $PWD:/pwd --rm -ti debian:jessie bash'
