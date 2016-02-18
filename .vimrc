@@ -142,4 +142,3 @@ let NERDTreeQuitOnOpen=1
 
 
 set completeopt=menu
-set foldmethod=syntax
