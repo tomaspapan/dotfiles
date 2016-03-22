@@ -14,3 +14,7 @@ function archlinux {
     docker run --rm -ti -v "$PWD:/pwd" $PARAMS pyrula/archlinux
 }
 
+function nodejs {
+    PARAMS=$@
+    docker run --rm -ti -v "$PWD:/pwd" $PARAMS pyrula/nodejs
+}
