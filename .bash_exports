@@ -37,8 +37,3 @@ if [ "$OS" '==' "Linux" ]; then
     export TERM='xterm-256color'
 fi
 
-packer_cache_dir="${HOME}/packer_cache"
-
-if [ ! -d "${packer_cache_dir}" ]; then
-        mkdir -p "${packer_cache_dir}"
-fi
