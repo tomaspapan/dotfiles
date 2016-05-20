@@ -65,7 +65,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias installapp='brew cask install'
     alias server='open "http://localhost:8000" && python3 -m http.server'
     alias update='brew update; brew upgrade --all; brew cleanup; npm update -g'
-    alias archie='cd $HOME/git/vagrant-boxes/single-boxes/archie && va ssh'
+    alias archie='cd $HOME/git/vagrant-boxes/archie && va ssh'
 else
     alias cal='cal --monday'
 fi
