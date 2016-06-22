@@ -6,8 +6,8 @@ alias docker-create='docker-machine create -d virtualbox --engine-storage-driver
 alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk '"'{print \$3}'"')'
 
 alias docker-debian='docker run -v $PWD:/pwd --rm -ti debian:jessie bash'
-alias docker-ubuntu='docker run -v $PWD:/pwd --rm -ti ubuntu:14.04 bash'
-alias docker-alpine='docker run -v $PWD:/pwd --rm -ti alpine:latest sh'
+alias docker-ubuntu='docker run -v $PWD:/pwd --rm -ti ubuntu:16.04 bash'
+alias docker-alpine='docker run -v $PWD:/pwd --rm -ti alpine:3.4 sh'
 
 function docker-archlinux {
     PARAMS=$@
