@@ -3,7 +3,7 @@ function get_hostname {
 	env | grep SSH_CLIENT > /dev/null 2>&1
 	if  [ $? -eq 0 ]; then echo "[${CYAN}${HOSTNAME}${C_RESET}]"
 	else
-		 if [[ ${USER} == "root" ]]; then
+		 if [[ ${UID} == 0 ]]; then
 		    echo "[${RED}${HOSTNAME}${C_RESET}]"
 		 fi
 	fi
