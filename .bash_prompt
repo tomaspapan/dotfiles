@@ -31,7 +31,7 @@ function git_prompt_color {
 function precmd {
     local target="[${CYAN}${PWD/#$HOME/\~}${C_RESET}]"
     local prefix="${TITLEBAR}┌─$(get_hostname)$(git_prompt_color)${target}"
-    if [[ ${USER} == "root" ]]; then
+    if [[ ${UID} -eq 0 ]]; then
         export PS1="${prefix}\n└─${RED}▪ ${C_RESET}"
     else
         export PS1="${prefix}\n└─${CYAN}▪ ${C_RESET}"
