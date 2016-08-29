@@ -3,7 +3,7 @@ alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(dock
 alias docker-shell=__docker-shell
 alias docker-init='eval "$(docker-machine env dev)"'
 alias docker-create='docker-machine create -d virtualbox --engine-storage-driver=overlay dev'
-alias docker-removeunusedimg='docker rmi $(docker images | grep "^<none>" | awk '"'{print \$3}'"')'
+alias docker-removeunusedimg='docker rmi $(docker images | grep "<none>" | awk '"'{print \$3}'"')'
 
 alias docker-debian='docker run -v $PWD:/pwd --rm -ti debian:jessie bash'
 alias docker-ubuntu='docker run -v $PWD:/pwd --rm -ti ubuntu:16.04 bash'
