@@ -40,6 +40,7 @@ alias va='vagrant'
 alias scan_network="__scan_network $@"
 alias generate_network="__generate_network $@"
 alias pip-update='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
+alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 
 
 if [ "$OS" '==' "Darwin" ]; then
