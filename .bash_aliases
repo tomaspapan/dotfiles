@@ -1,10 +1,4 @@
 
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias g="git"
-alias h="history"
-alias j="jobs"
-
 alias ls='ls --color=auto'
 alias ll='ls -la'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
@@ -13,35 +7,25 @@ alias d="du -ms"
 alias dus='for i in *; do du -ms "$i"; done | sort -n'
 alias vi='vim'
 alias virsh="virsh --connect qemu:///system"
-alias sa='ssh morpheus@anakin'
 alias ms='pmset sleepnow; logout'
-alias stopmotion_fast='ffmpeg -r 12 -i clip-%d.jpg -b 40M clip.mov'
-alias stopmotion_slow='ffmpeg -r 7 -i clip-%d.jpg -b 25M clip.mov'
 alias cdg='cd ~/git/'
-alias anakin="open vnc://anakin:5901"
-alias vnc="vncserver -geometry 1600x1050"
 alias web="__backup web $@"
 alias backup="__backup backup $@"
 alias encrypt_file="__encrypt_file $@"
 alias decrypt_file="__decrypt_file $@"
 alias update='sudo emerge -NDuvaq world && sudo emerge --depclean -a && sudo revdep-rebuild && sudo eclean-dist -d && sudo sh -c "echo -n > /tmp/new_packages"'
-alias s='cat /etc/motd'
 alias c='tmux attach -d'
-alias virsh-startall='for host in `virsh list --all | grep -i '"'shut'"' | awk '"'{print \$2}'"'`; do virsh start $host; done'
-alias virsh-stopall='for host in `virsh list --all | grep -i '"'run'"' | awk '"'{print \$2}'"'`; do virsh shutdown $host; done'
 alias reload='~/dotfiles/bootstrap.sh'
 alias bye='exit'
 alias sha1check='openssl sha1 '
 alias edithosts='sudo vim /etc/hosts'
 alias editethers='sudo vim /etc/ethers'
 alias ipt='iptables -L -v -n'
-alias rtorrent='rtorrent -p 6998-6999'
 alias va='vagrant'
 alias scan_network="__scan_network $@"
 alias generate_network="__generate_network $@"
 alias pip-update='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-
 
 if [ "$OS" '==' "Darwin" ]; then
     alias ls='ls -GFh'
