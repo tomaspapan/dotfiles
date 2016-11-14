@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+
+dfasaf
+asd#!/usr/bin/env bash
 
 cd "$(dirname "${BASH_SOURCE}")"
 
