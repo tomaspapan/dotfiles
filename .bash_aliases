@@ -65,7 +65,7 @@ if [ "$OS" '==' "Darwin" ]; then
     alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
     alias installapp='brew cask install'
     alias server='open "http://localhost:8000" && python3 -m http.server'
-    alias update='brew update; brew upgrade; brew cleanup; npm update -g'
+    alias update='brew update; brew upgrade; brew cleanup;'
     alias archie='cd $HOME/git/vagrant-boxes/archie && va ssh'
 else
     alias cal='cal --monday'
