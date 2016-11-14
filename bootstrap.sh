@@ -9,6 +9,10 @@ git submodule update
 
 
 function doIt() {
+    if [ ! -f ~/.zshrc ]; then
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    fi
+
     rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
         --exclude "homebrew.sh" --exclude "README.md" --exclude "LICENSE-MIT.txt" \
         -avh --no-perms . ~
@@ -18,7 +22,7 @@ function doIt() {
     mkdir ~/.vim/undodir > /dev/null 2>&1
     mkdir ~/go > /dev/null 2>&1
 
-    source ~/.bash_profile
+    if [ $(basename $SHELL) = "bash" ]; then  source ~/.bash_profile; fi
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then

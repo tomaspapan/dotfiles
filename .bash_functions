@@ -247,7 +247,7 @@ function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-if [ $OS == "Darwin" ]
+if [ $OS = "Darwin" ]
 then
 
   # Change working directory to the top-most Finder window location
