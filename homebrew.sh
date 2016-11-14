@@ -12,7 +12,7 @@ brew install \
     bash-completion \
     coreutils \
     htop-osx \
-    macvim --with-python3 \
+    macvim \
     midnight-commander \
     mobile-shell \
     nmap \
