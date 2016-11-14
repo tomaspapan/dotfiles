@@ -17,10 +17,6 @@ function doIt() {
     mkdir ~/.vim/undodir > /dev/null 2>&1
     mkdir ~/go > /dev/null 2>&1
 
-    if [ ! -f ~/.local/bin/powerline-lint ]; then 
-        pip install --user --editable=$HOME/dotfiles/.vim/bundle/powerline
-    fi
-
 	source ~/.bash_profile
 }
 
