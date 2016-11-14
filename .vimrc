@@ -1,6 +1,3 @@
-
-" operational settings
-set rtp+=$HOME/.vim/bundle/powerline/powerline/bindings/vim
 set laststatus=2
 syntax on
 set ruler                     " show the line number on the bar
@@ -74,11 +71,11 @@ let Tlist_File_Fold_Auto_Close = 1
 map <LocalLeader>c  :!ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
 map <LocalLeader>r :e ~/.vimrc<cr>
 map <LocalLeader>t :e ~/TODO<cr>
-map <LocalLeader>b :call BufferList()<CR>  
-map <LocalLeader>n :NERDTreeToggle<CR>  
-map <LocalLeader>d :call DarkTheme()<CR>  
-map <LocalLeader>l :call LightTheme()<CR>  
-map <LocalLeader>m :call SmyckTheme()<CR>  
+map <LocalLeader>b :call BufferList()<CR>
+map <LocalLeader>n :NERDTreeToggle<CR>
+map <LocalLeader>d :call DarkTheme()<CR>
+map <LocalLeader>l :call LightTheme()<CR>
+map <LocalLeader>m :call SmyckTheme()<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>x :call SpellcheckOFF()<cr>
 
@@ -105,14 +102,21 @@ end
 
 colorscheme smyck      " macvim == win
 
-set backupskip=/tmp/*,/private/tmp/*" 
-
+set backupskip=/tmp/*,/private/tmp/*"
 
 " init
-set runtimepath+=$HOME/.vim/bundle/vim-pathogen/
-runtime autoload/pathogen.vim                                                      
-call pathogen#infect('bundle/{}')                                                           
-call pathogen#helptags() 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'roblillack/vim-bufferlist'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+call vundle#end()            " required
+filetype plugin indent on
 
 function! DarkTheme()
         set background=dark
@@ -142,3 +146,4 @@ let NERDTreeQuitOnOpen=1
 
 
 set completeopt=menu
+let g:airline_powerline_fonts = 1
