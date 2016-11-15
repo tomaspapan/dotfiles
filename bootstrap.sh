@@ -9,10 +9,6 @@ git submodule update
 
 
 function doIt() {
-    if [ ! -f ~/.zshrc ]; then
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    fi
-
     rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
         --exclude "homebrew.sh" --exclude "README.md" --exclude "LICENSE-MIT.txt" \
         -avh --no-perms . ~
