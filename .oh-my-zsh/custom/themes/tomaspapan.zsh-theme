@@ -1,7 +1,8 @@
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 local host_status
 
-if [ -n $SSH_CLIENT ]; then
+env | grep SSH_CLIENT > /dev/null 2>&1
+if [ $? -eq 0 ]; then
     host_status="%{$fg_bold[green]%}$HOSTNAME "
 fi
 
