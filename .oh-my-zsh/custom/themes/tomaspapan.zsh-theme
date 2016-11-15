@@ -3,11 +3,11 @@ local host_status
 
 env | grep SSH_CLIENT > /dev/null 2>&1
 if [ $? -eq 0 ]; then
-    host_status="%{$fg_bold[green]%}$HOSTNAME "
+    host_status="%{$fg_bold[green]%}$HOST "
 fi
 
 if [ $UID -eq 0 ]; then
-    host_status="%{$fg_bold[red]%}$HOSTNAME "
+    host_status="%{$fg_bold[red]%}$HOST "
 fi
 
 
