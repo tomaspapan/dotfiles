@@ -2,11 +2,14 @@ image: debian:jessie
 
 build:
     stage: build
+    cache:
+        key: apt-cache
+        paths:
+            - apt-cache/
+            - ./.vim/
     before_script:
-        - apt-get update -y && apt-get install -y git python vim-nox
+        - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
+        - apt-get update -y && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -y git python vim-nox
     script:
         - echo yes | ./bootstrap.sh
         - ./test.sh
-    cache:
-        paths:
-            - ./.vim

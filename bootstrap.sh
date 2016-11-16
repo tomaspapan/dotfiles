@@ -22,7 +22,7 @@ function doIt() {
     source ~/.bash_profile
 
     vim +PluginInstall +qall
-    cd ~/.vim/bundle/YouCompleteMe && install.py --clang-completer
+    cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
     cd ~
 }
 
