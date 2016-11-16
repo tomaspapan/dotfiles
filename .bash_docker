@@ -1,32 +1,5 @@
-alias docker-cleanall='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
-alias docker-cleancontainers='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)'
+alias docker-purge='docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q) && docker rmi $(docker images -q)'
 alias docker-shell=__docker-shell
-alias docker-init='eval "$(docker-machine env dev)"'
 alias docker-create='docker-machine create -d virtualbox --engine-storage-driver=overlay dev'
-alias docker-removeunusedimg='docker rmi $(docker images | grep "<none>" | awk '"'{print \$3}'"')'
+alias docker-clean='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc'
 
-alias docker-debian='docker run -v $PWD:/pwd --rm -ti debian:jessie bash'
-alias docker-ubuntu='docker run -v $PWD:/pwd --rm -ti ubuntu:16.04 bash'
-alias docker-alpine='docker run -v $PWD:/pwd --rm -ti alpine:3.4 sh'
-
-function docker-archlinux {
-    PARAMS=$@
-    docker run --rm -ti -v "$PWD:/pwd" $PARAMS pyrula/archlinux
-}
-
-function docker-nodejs {
-    PARAMS=$@
-    docker run --rm -ti -v "$PWD:/pwd" $PARAMS pyrula/nodejs
-}
-
-function docker-sshd {
-    if [[ $# -lt 1 ]]; then
-        echo "You have to specify at least port with -p argument."
-        echo "Password can be specified with -e PASSWD= option"
-        echo "Example: docker-sshd -p 192.168.0.1:3022:22 -e PASSWD=\"hello\""
-        return;
-    fi
-
-    PARAMS=$@
-    docker run --name sshd -d -v "$PWD:/pwd" $PARAMS pyrula/sshd
-}
