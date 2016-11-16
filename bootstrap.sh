@@ -10,7 +10,7 @@ git submodule update
 
 function doIt() {
     rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-        --exclude "homebrew.sh" --exclude "README.md" --exclude "LICENSE-MIT.txt" \
+        --exclude "homebrew.sh" --exclude "README.md" --exclude .gitlab-ci.yml --exclude "LICENSE-MIT.txt" \
         -avh --no-perms . ~
 
     mkdir ~/.vim/backup > /dev/null 2>&1
