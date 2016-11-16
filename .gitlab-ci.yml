@@ -1,15 +1,10 @@
 image: debian:jessie
 
-before_script: 
-    - apt-get update -y && apt-get install -y vim git
-
 build:
     stage: build
+    before_script:
+        - apt-get update -y && apt-get install -y vim git
     script:
         - echo yes | ./bootstrap.sh
         - vim +PluginInstall +qall
-
-test:
-    stage: test
-    script:
         - ./test.sh
