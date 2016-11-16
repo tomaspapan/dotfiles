@@ -3,7 +3,10 @@ image: debian:jessie
 build:
     stage: build
     before_script:
-        - apt-get update -y && apt-get install -y vim git python
+        - apt-get update -y && apt-get install -y git python vim-nox
     script:
         - echo yes | ./bootstrap.sh
         - ./test.sh
+    cache:
+        paths:
+            - ./.vim
