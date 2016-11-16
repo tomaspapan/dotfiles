@@ -19,6 +19,8 @@ function doIt() {
     mkdir ~/go > /dev/null 2>&1
 
     if [ $(basename $SHELL) = "bash" ]; then  source ~/.bash_profile; fi
+
+    vim +PluginInstall +qall
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
