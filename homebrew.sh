@@ -11,6 +11,7 @@ brew install \
     bash \
     bash-completion \
     coreutils \
+    ctags \
     htop-osx \
     macvim \
     midnight-commander \

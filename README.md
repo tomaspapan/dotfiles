@@ -1,20 +1,22 @@
-# [Tomas Papan's](http://papan.sk) Dotfiles
-
-## Install
+## [Tomas Papan's](http://papan.sk) Dotfiles
 
 ### Pull the repo into your home directory
-
 ``` 
 git clone https://gitlab.papan.sk/morpheus/dotfiles.git
 ./dotfiles/bootstrap.sh
 ```
 
-### Tell your system to load the custom configurations
-
+### Install vim dependencies
 ```
-source ~/.bashrc
+install-vim
+```
+It will install all the plugins and run the YouCompleteMe install script
+with clang support.
+
+### Update 
+```
+reload
 ```
 
-## License
-
+### License
 Public domain

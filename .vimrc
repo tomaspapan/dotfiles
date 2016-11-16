@@ -40,10 +40,6 @@ set backupdir=~/.vim/backup,.,~/
 set directory=~/.vim/tmp,~/tmp,.,/tmp
 set confirm
 set viminfo='50,\"500
-"           |   |
-"           |   + maximum size of register - 500 lines
-"           + Information stored about last (max) 50 files
-
 set undodir=~/.vim/undodir
 set undofile
 set undolevels=1024
@@ -70,14 +66,11 @@ let Tlist_File_Fold_Auto_Close = 1
 " (LocalLeader is ",")
 map <LocalLeader>c  :!ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
 map <LocalLeader>r :e ~/.vimrc<cr>
-map <LocalLeader>t :e ~/TODO<cr>
 map <LocalLeader>b :call BufferList()<CR>
 map <LocalLeader>n :NERDTreeToggle<CR>
-map <LocalLeader>d :call DarkTheme()<CR>
-map <LocalLeader>l :call LightTheme()<CR>
-map <LocalLeader>m :call SmyckTheme()<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>x :call SpellcheckOFF()<cr>
+map <LocalLeader>t :TagbarToggle<cr> 
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
@@ -90,15 +83,6 @@ set ignorecase                " search ignoring case
 set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
 set diffopt=filler,iwhite     " ignore all whitespace and sync
-
-
-if has("gui_running")
-    set guioptions-=T       " no toolbar
-    set cursorline          " show the cursor line
-    set guifont=Menlo\ for\ Powerline:h12
-    set lines=50
-    set columns=120
-end
 
 colorscheme smyck      " macvim == win
 
@@ -114,23 +98,11 @@ Plugin 'roblillack/vim-bufferlist'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
 filetype plugin indent on
-
-function! DarkTheme()
-        set background=dark
-        colorscheme solarized
-endfunction
-
-
-function! LightTheme()
-        set background=light
-        colorscheme solarized
-endfunction
-
-function! SmyckTheme()
-        colorscheme smyck
-endfunction
 
 function! SpellcheckON()
         setlocal spell spelllang=en_us
@@ -143,7 +115,11 @@ endfunction
 "nerdtree
 let NERDTreeQuitOnOpen=1
 
-
 set completeopt=menu
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_extra_conf_globlist = ['~/devel/*','!~/*']
+autocmd FileType c,cpp,objc,objcpp,python,cs nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>

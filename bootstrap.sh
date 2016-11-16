@@ -19,7 +19,7 @@ function doIt() {
     mkdir ~/.vim/undodir > /dev/null 2>&1
     mkdir ~/go > /dev/null 2>&1
 
-    if [ $(basename $SHELL) = "bash" ]; then  source ~/.bash_profile; fi
+    source ~/.bash_profile
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
