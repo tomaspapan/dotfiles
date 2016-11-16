@@ -20,10 +20,6 @@ function doIt() {
     mkdir ~/go > /dev/null 2>&1
 
     source ~/.bash_profile
-
-    vim +PluginInstall +qall
-    cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
-    cd ~
 }
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
