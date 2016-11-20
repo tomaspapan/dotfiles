@@ -1,6 +1,6 @@
 
 alias ls='ls --color=auto'
-alias ll='ls -la'
+alias ll='ls -l'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
 alias fperm="find . -type f -exec chmod 0644 '{}' \;"
 alias d="du -ms"
