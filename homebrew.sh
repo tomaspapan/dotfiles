@@ -16,6 +16,7 @@ brew install \
     macvim \
     midnight-commander \
     mobile-shell \
+    nodejs \
     nmap \
     packer \
     python \
