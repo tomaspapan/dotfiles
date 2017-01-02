@@ -13,6 +13,7 @@ brew install \
     coreutils \
     ctags \
     htop-osx \
+    mas \
     macvim \
     midnight-commander \
     mobile-shell \
