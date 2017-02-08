@@ -11,7 +11,6 @@ fi
 . $HOME/.bash_functions
 . $HOME/.bash_prompt
 . $HOME/.bash_aliases
-. $HOME/.bash_docker
 
 
 if [ -f /etc/profile.d/bash-completion.sh ]; then
