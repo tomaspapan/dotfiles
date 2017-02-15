@@ -27,6 +27,7 @@ alias generate_network="__generate_network $@"
 alias pip-update='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U'
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias install-vim="vim +PluginInstall +qall && cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer"
+alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 
 if [ "$OS" '==' "Darwin" ]; then
     alias ls='ls -GFh'
