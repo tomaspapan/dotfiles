@@ -53,8 +53,8 @@ if [ "$OS" '==' "Darwin" ]; then
     alias server='open "http://localhost:8000" && python3 -m http.server'
     alias update='brew update; brew upgrade; brew cleanup;'
     alias archie='cd $HOME/git/vagrant-boxes/archie && va ssh'
-    alias no-bounce='defaults write com.apple.dock no-bouncing -bool TRUE'
-    alias bounce='defaults write com.apple.dock no-bouncing -bool FALSE'
+    alias no-bounce='defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock'
+    alias bounce='defaults write com.apple.dock no-bouncing -bool FALSE && killall Dock'
 else
     alias cal='cal --monday'
 fi
