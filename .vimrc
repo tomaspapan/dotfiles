@@ -101,6 +101,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'majutsushi/tagbar'
+Plugin 'bronson/vim-trailing-whitespace'
 call vundle#end()            " required
 filetype plugin indent on
 
