@@ -70,7 +70,7 @@ map <LocalLeader>b :call BufferList()<CR>
 map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>x :call SpellcheckOFF()<cr>
-map <LocalLeader>t :TagbarToggle<cr> 
+map <LocalLeader>t :TagbarToggle<cr>
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
