@@ -22,6 +22,7 @@ brew install \
     packer \
     python \
     python3 \
+    rsync \
     ssh-copy-id \
     tmux \
     wget \
