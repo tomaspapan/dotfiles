@@ -1,5 +1,9 @@
 ## [Tomas Papan's](http://papan.sk) Dotfiles
 
+### Prerequisites
+```
+git vim python rsync
+```
 ### Pull the repo into your home directory
 ```
 git clone https://gitlab.papan.sk/morpheus/dotfiles.git
