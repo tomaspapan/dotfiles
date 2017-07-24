@@ -28,7 +28,7 @@ alias pip-update='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias install-vim="vim +PluginInstall +qall"
 alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
-alias work-tunnel='ssh -D 8123 -f -C -q -N -p 80 morpheus@109.230.4.58'
+alias work-tunnel='ssh -D 8123 -f -C -q -N -p 8031 morpheus@192.168.175.2'
 
 if [ "$OS" '==' "Darwin" ]; then
     alias ls='ls -GFh'
