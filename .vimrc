@@ -100,6 +100,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'posva/vim-vue'
 call vundle#end()            " required
 filetype plugin indent on
 
