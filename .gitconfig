@@ -1,19 +1,19 @@
 [user]
     name = Tomas Papan
     email = tomas.papan@gmail.com
+	signingkey = 2B0055DB
 [alias]
     co = checkout
     ci = commit
     st = status
     br = branch
     bra = branch -avv
-    hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
     prune = fetch --prune
     undo = reset --soft HEAD^
     stash-all = stash save --include-untracked
-    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 [merge]
     conflictstyle = diff3
 [push]
