@@ -1,7 +1,6 @@
 [user]
     name = Tomas Papan
     email = tomas.papan@gmail.com
-    signingkey = 2B0055DB
 [alias]
     co = checkout
     ci = commit
@@ -44,6 +43,3 @@
     smudge = git media smudge %f
 [credential]
     helper = cache --timeout=3600
-
-[commit]
-	gpgsign = true
