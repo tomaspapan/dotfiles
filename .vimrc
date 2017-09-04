@@ -138,7 +138,7 @@ hi GitGutterDelete ctermbg=235 ctermfg=245
 hi GitGutterChangeDelete ctermbg=235 ctermfg=245
 hi EndOfBuffer ctermfg=237 ctermbg=235
 
-set statusline=%=%P\ %f\ %m
+set statusline=%=%f\ %P\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 
 set laststatus=2
 set noshowmode
