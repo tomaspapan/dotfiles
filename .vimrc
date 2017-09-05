@@ -84,8 +84,6 @@ set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
 set diffopt=filler,iwhite     " ignore all whitespace and sync
 
-colorscheme smyck      " macvim == win
-
 set backupskip=/tmp/*,/private/tmp/*"
 
 " init
@@ -99,6 +97,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'posva/vim-vue'
+Plugin 'rust-lang/rust.vim'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -123,20 +122,23 @@ let g:ycm_extra_conf_globlist = ['~/devel/*','!~/*']
 autocmd FileType c,cpp,objc,objcpp,python,cs nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 set background=dark
-colorscheme gruvbox
-hi vertsplit ctermfg=238 ctermbg=235
-hi LineNr ctermfg=237
-hi StatusLine ctermfg=235 ctermbg=245
-hi StatusLineNC ctermfg=235 ctermbg=237
-hi Search ctermbg=58 ctermfg=15
-hi Default ctermfg=1
-hi clear SignColumn
-hi SignColumn ctermbg=235
-hi GitGutterAdd ctermbg=235 ctermfg=245
-hi GitGutterChange ctermbg=235 ctermfg=245
-hi GitGutterDelete ctermbg=235 ctermfg=245
-hi GitGutterChangeDelete ctermbg=235 ctermfg=245
-hi EndOfBuffer ctermfg=237 ctermbg=235
+hi javaRepeat ctermfg = green
+hi javaType ctermfg = green
+hi javaStorageClass ctermfg = green cterm=bold
+hi javaDocTags ctermfg = green
+hi Conditional ctermfg = green
+hi LineNr ctermfg = magenta
+hi Comment ctermfg = red
+hi Statement ctermfg = blue
+hi Function ctermfg = blue
+hi Identifier ctermfg = blue
+hi Exception ctermfg = green
+hi Special ctermfg = green
+hi String ctermfg = yellow
+hi MatchParen ctermbg=none cterm=underline ctermfg=magenta
+hi StatusLine ctermbg=none cterm=bold ctermfg=black
+"hi VertSplit ctermbg=none cterm=bold ctermfg=black
+hi VertSplit ctermfg = none
 
 set statusline=%=%f\ %P\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 

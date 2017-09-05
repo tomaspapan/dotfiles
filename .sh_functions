@@ -11,7 +11,7 @@ function __decrypt_file {
 }
 
 function __backup {
-    case "$1" in 
+    case "$1" in
         "backup")
             URL='/home/morpheus/backup/'
             ;;
@@ -27,14 +27,14 @@ function __backup {
             ;;
 
         "push")
-            scp -P 7777 -r "$3" morpheus@papan.sk:$URL 
-            if [ "$1" == "web" ] 
-            then 
-                echo "http://papan.sk/share/$3" 
+            scp -P 7777 -r "$3" morpheus@papan.sk:$URL
+            if [ "$1" == "web" ]
+            then
+                echo "http://papan.sk/share/$3"
             fi
             ;;
         "list")
-            ssh -p 7777 morpheus@papan.sk "cd $URL && du -ms *" 
+            ssh -p 7777 morpheus@papan.sk "cd $URL && du -ms *"
             if [ $? -ne 0 ]; then
                 echo "There is nothing!"
             fi
@@ -80,20 +80,20 @@ function flac_to_320_mp3()
     done
 }
 
-function genpasswd() 
+function genpasswd()
 {
     local l=$1
     [ "$l" == "" ] && l=20
     tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
 }
 
-function genpasswds() 
+function genpasswds()
 {
     local l=$1
     local t=$2
     [ "$l" == "" ] && l=20
     [ "$t" == "" ] && t=10
-    for i in `seq $t` 
+    for i in `seq $t`
     do
         tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
     done
@@ -260,4 +260,4 @@ then
         open "$@";
     fi;
   }
- fi 
+ fi
