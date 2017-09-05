@@ -2,7 +2,7 @@
 
 ### Prerequisites
 ```
-git vim python rsync
+git vim python rsync zsh zsh-completions
 ```
 ### Pull the repo into your home directory
 ```
