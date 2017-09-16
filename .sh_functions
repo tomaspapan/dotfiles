@@ -58,7 +58,7 @@ function flac_to_alac()
     mkdir alac;
     for f in *.flac
     do
-            ffmpeg -i "$f" -acodec alac "alac/${f%.flac}.m4a"
+            ffmpeg -i "$f" -vn -acodec alac "alac/${f%.flac}.m4a"
     done
 }
 
