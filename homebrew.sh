@@ -12,13 +12,14 @@ brew install \
     bash-completion \
     coreutils \
     ctags \
+    ffmpeg \
     htop-osx \
-    mas \
     macvim \
+    mas \
     midnight-commander \
     mobile-shell \
-    nodejs \
     nmap \
+    nodejs \
     packer \
     python \
     python3 \
@@ -27,5 +28,6 @@ brew install \
     tmux \
     wget \
     wireshark --with-qt5 \
-    youtube-dl
-
+    youtube-dl \
+    zsh \
+    zsh-completions
