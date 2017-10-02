@@ -67,7 +67,7 @@ function flac_to_mp3()
     mkdir mp3;
     for f in *.flac
     do
-            ffmpeg -i "$f" -ab 196k -ac 2 -ar 48000 "mp3/${f%.flac}.mp3"
+            ffmpeg -i "$f" -vn -ab 196k -ac 2 -ar 48000 "mp3/${f%.flac}.mp3"
     done
 }
 
@@ -76,7 +76,7 @@ function flac_to_320_mp3()
     mkdir mp3_320;
     for f in *.flac
     do
-            ffmpeg -i "$f" -ab 320k -ac 2 "mp3_320/${f%.flac}.mp3"
+            ffmpeg -i "$f" -vn -ab 320k -ac 2 "mp3_320/${f%.flac}.mp3"
     done
 }
 
