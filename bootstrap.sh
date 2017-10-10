@@ -11,6 +11,7 @@ function doIt() {
         --exclude "homebrew.sh" --exclude "README.md" --exclude .gitlab-ci.yml \
         --exclude "LICENSE-MIT.txt" --exclude "test.sh" \
         --exclude ".gitmodules" --exclude ".gitignore" \
+        --exclude "homebrew-cask.sh" \
         -avh --no-perms . ~
 
     mkdir ~/.vim/backup > /dev/null 2>&1
