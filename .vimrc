@@ -45,6 +45,7 @@ set undofile
 set undolevels=1024
 set undoreload=65538
 set title
+set path+=**
 
 
 " shortcut's for C programming
@@ -66,11 +67,9 @@ let Tlist_File_Fold_Auto_Close = 1
 " (LocalLeader is ",")
 map <LocalLeader>c  :!ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
 map <LocalLeader>r :e ~/.vimrc<cr>
-map <LocalLeader>b :call BufferList()<CR>
 map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>x :call SpellcheckOFF()<cr>
-map <LocalLeader>t :TagbarToggle<cr>
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
@@ -92,10 +91,6 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
-Plugin 'roblillack/vim-bufferlist'
-Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'posva/vim-vue'
 Plugin 'rust-lang/rust.vim'
 call vundle#end()            " required
@@ -144,4 +139,5 @@ set statusline=%=%f\ %P\ %m
 set fillchars=vert:\ ,stl:\ ,stlnc:\ 
 set laststatus=2
 set noshowmode
+
 
