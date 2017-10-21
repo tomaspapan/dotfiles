@@ -1,9 +1,7 @@
-set laststatus=2
 syntax on
 set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
-"set number                    " line numbers
 set hidden
 set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
@@ -70,6 +68,7 @@ map <LocalLeader>r :e ~/.vimrc<cr>
 map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>x :call SpellcheckOFF()<cr>
+nmap ; :Buffers<CR>
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
@@ -89,10 +88,13 @@ set backupskip=/tmp/*,/private/tmp/*"
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
 Plugin 'posva/vim-vue'
 Plugin 'rust-lang/rust.vim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call vundle#end()            " required
 filetype plugin indent on
 
