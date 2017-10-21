@@ -12,5 +12,5 @@ function check_for_file()
 
 check_for_file "$HOME/.vimrc"
 check_for_file "$HOME/.zshrc"
-check_for_file "$HOME/.vim/bundle/Vundle.vim/changelog.md"
+check_for_file "$HOME/.vim/autoload/plug.vim"
 
