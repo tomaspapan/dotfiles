@@ -55,9 +55,10 @@ map <LocalLeader>c  :!ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpst
 map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>d :call SpellcheckOFF()<cr>
+map <LocalLeader>r :edit ~/.vimrc<cr>
 nmap ; :Buffers<CR>
-nmap <LocalLeader>t :Files<CR>
-nmap <LocalLeader>r :Tags<CR>
+nmap <LocalLeader>f :Files<CR>
+nmap <LocalLeader>t :Tags<CR>
 nmap <LocalLeader>k :Ack! "\b<cword>\b" <CR>
 nmap <LocalLeader>x :cclose <CR>
 
