@@ -44,31 +44,22 @@ set undolevels=1024
 set undoreload=65538
 set title
 set path+=**
-
-
-" shortcut's for C programming
-ab #d #define
-ab #i #include
-ab #t typedef
-ab intmain int main(int argc, char **argv)
-
-" Settings for taglist.vim
-let Tlist_Use_Right_Window=1
-let Tlist_Auto_Open=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Compact_Format=0
-let Tlist_WinWidth=28
-let Tlist_Exit_OnlyWindow=1
-let Tlist_File_Fold_Auto_Close = 1
+set statusline=%=%f\ %P\ %m
+set fillchars=vert:\ ,stl:\ ,stlnc:\ 
+set laststatus=2
+set noshowmode
 
 " tabs
 " (LocalLeader is ",")
 map <LocalLeader>c  :!ctags -R --C++-kinds=+cdefglmnpstuv --C-kinds=+cdefglmnpstuv --fields=+iaS --extra=+q<cr><cr>
-map <LocalLeader>r :e ~/.vimrc<cr>
 map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
-map <LocalLeader>x :call SpellcheckOFF()<cr>
+map <LocalLeader>d :call SpellcheckOFF()<cr>
 nmap ; :Buffers<CR>
+nmap <LocalLeader>t :Files<CR>
+nmap <LocalLeader>r :Tags<CR>
+nmap <LocalLeader>k :Ack! "\b<cword>\b" <CR>
+nmap <LocalLeader>x :cclose <CR>
 
 " mouse stuffs
 set mouse=a                   " mouse support in all modes
@@ -87,37 +78,35 @@ set backupskip=/tmp/*,/private/tmp/*"
 " init
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=/usr/local/opt/fzf
-call vundle#begin()
-Plugin 'scrooloose/nerdtree'
-Plugin 'posva/vim-vue'
-Plugin 'rust-lang/rust.vim'
-Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-call vundle#end()            " required
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+Plug 'posva/vim-vue'
+Plug 'rust-lang/rust.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'junegunn/goyo.vim'
+Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
 filetype plugin indent on
 
-function! SpellcheckON()
-        setlocal spell spelllang=en_us
-endfunction
-
-function! SpellcheckOFF()
-        set nospell
-endfunction
-
-"nerdtree
+" nerdtree
 let NERDTreeQuitOnOpen=1
 
-set completeopt=menu
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_extra_conf_globlist = ['~/devel/*','!~/*']
-autocmd FileType c,cpp,objc,objcpp,python,cs nnoremap <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"ack
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
 
+"gitgutter
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
+
+" colorscheme
 set background=dark
 hi javaRepeat ctermfg = green
 hi javaType ctermfg = green
@@ -134,12 +123,27 @@ hi Special ctermfg = green
 hi String ctermfg = yellow
 hi MatchParen ctermbg=none cterm=underline ctermfg=magenta
 hi StatusLine ctermbg=none cterm=bold ctermfg=black
-"hi VertSplit ctermbg=none cterm=bold ctermfg=black
 hi VertSplit ctermfg = none
 
-set statusline=%=%f\ %P\ %m
-set fillchars=vert:\ ,stl:\ ,stlnc:\ 
-set laststatus=2
-set noshowmode
+" shortcut's for C programming
+ab #d #define
+ab #i #include
+ab #t typedef
+ab intmain int main(int argc, char **argv)
 
+" functions
+function! SpellcheckON()
+	setlocal spell spelllang=en_us
+endfunction
 
+function! SpellcheckOFF()
+	set nospell
+endfunction
+
+function! ProseMode()
+  call goyo#execute(0, [])
+  set spell noci nosi noai nolist noshowmode noshowcmd
+  set complete+=s
+endfunction
+
+command! ProseMode call ProseMode()

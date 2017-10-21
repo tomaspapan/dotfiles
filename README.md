@@ -2,8 +2,11 @@
 
 ### Prerequisites
 ```
-git vim python rsync zsh zsh-completions
+git vim python rsync zsh zsh-completions curl
+optional: the_silver_searcher(ag)
 ```
+
+
 ### Pull the repo into your home directory
 ```
 git clone https://gitlab.papan.sk/morpheus/dotfiles.git

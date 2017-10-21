@@ -19,6 +19,11 @@ function doIt() {
     mkdir ~/.vim/undodir > /dev/null 2>&1
     mkdir ~/go > /dev/null 2>&1
 
+    if [ ! -f ~/.vim/autoload/plug.vim ]; then
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    fi
+
     source ~/.zshrc
 }
 
