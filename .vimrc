@@ -80,8 +80,6 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
-Plug 'posva/vim-vue'
-Plug 'rust-lang/rust.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mileszs/ack.vim'
@@ -89,6 +87,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/goyo.vim'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 call plug#end()
 filetype plugin indent on
 
