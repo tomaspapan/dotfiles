@@ -3,7 +3,7 @@ image: debian:jessie
 build:
     stage: build
     before_script:
-        - apt-get update -y && apt-get install -y git
+        - apt-get update -y && apt-get install -y git curl
     script:
         - echo yes | ./bootstrap.sh
         - ./test.sh
