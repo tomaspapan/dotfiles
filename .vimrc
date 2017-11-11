@@ -56,7 +56,7 @@ map <LocalLeader>n :NERDTreeToggle<CR>
 map <LocalLeader>s :call SpellcheckON()<cr>
 map <LocalLeader>d :call SpellcheckOFF()<cr>
 map <LocalLeader>r :edit ~/.vimrc<cr>
-nmap ; :Buffers<CR>
+nmap <LocalLeader>b :Buffers<CR>
 nmap <LocalLeader>f :Files<CR>
 nmap <LocalLeader>t :Tags<CR>
 nmap <LocalLeader>k :Ack! "\b<cword>\b" <CR>
