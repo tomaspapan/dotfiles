@@ -20,7 +20,6 @@ brew install \
     mobile-shell \
     nmap \
     nodejs \
-    packer \
     python \
     python3 \
     rsync \
