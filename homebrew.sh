@@ -14,6 +14,7 @@ brew install \
     ctags \
     ffmpeg \
     htop-osx \
+    iproute2mac \
     macvim \
     mas \
     midnight-commander \
