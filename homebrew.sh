@@ -19,6 +19,7 @@ brew install \
     mas \
     midnight-commander \
     mobile-shell \
+    msmtp \
     nmap \
     nodejs \
     python \
