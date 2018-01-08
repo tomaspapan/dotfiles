@@ -9,6 +9,8 @@ export EDITOR='vim'
 export OS="$(uname -s)"
 export HOSTNAME="$(hostname -s)"
 export GOPATH=$HOME/go
+export VISUAL='vim'
+export GPG_TTY=${TTY}
 
 if [ "$OS" '==' "Darwin" ]; then
     export CLICOLOR=1
