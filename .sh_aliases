@@ -29,7 +29,7 @@ alias install-vim="vim +PlugInstall +qall"
 alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias work-tunnel='ssh -D 8123 -f -C -q -N -p 8031 morpheus@192.168.175.2'
 
-if [ "$OS" '==' "Darwin" ]; then
+if [ "$OS" '==' "Darwin" ] || [ "$OS" '==' "FreeBSD" ]; then
     alias ls='ls -GFh'
     alias vim='mvim -v'
     alias vi='mvim -v'
