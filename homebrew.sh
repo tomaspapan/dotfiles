@@ -26,6 +26,7 @@ brew install \
     python3 \
     rsync \
     ssh-copy-id \
+    the_silver_searcher \
     tmux \
     wget \
     wireshark --with-qt5 \
