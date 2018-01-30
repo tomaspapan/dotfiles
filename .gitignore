@@ -1,0 +1,8 @@
+# vim stuff
+
+/vim/vim/autoload
+/vim/vim/backup
+/vim/vim/colors
+/vim/vim/plugged
+/vim/vim/tmp
+/vim/vim/undodir
