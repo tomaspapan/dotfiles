@@ -17,7 +17,7 @@ function parseInput() {
                 shift
                 ;;
             -p|--profile)
-                PROFILE=$2
+                PROFILE="$2"
                 shift
                 shift
                 ;;
@@ -47,6 +47,8 @@ function doIt() {
     shopt -s dotglob
 
     cd ./profiles
+    
+    echo $PROFILE
 
     for profile in $PROFILE; do
         echo -n "Applying profile=$profile..."
@@ -68,7 +70,7 @@ function main() {
     git submodule init
     git submodule update --init --recursive
 
-    parseInput $@
+    parseInput "$@"
 
     if [ $EXECUTE -eq 1 ]; then
         if [ $FORCE -eq 1 ]; then
@@ -85,5 +87,5 @@ function main() {
 
 # main
 
-main $@
+main "$@"
 
