@@ -35,7 +35,7 @@ function parseInput() {
 }
 
 function listProfiles() {
-    echo "*basic *git openbox ssh"
+    echo "*basic *git openbox"
     echo 
     echo " * - the default profile"
     echo "Profiles can be definied as -p"
