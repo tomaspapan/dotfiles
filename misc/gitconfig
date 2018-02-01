@@ -1,6 +1,7 @@
 [user]
     name = Tomas Papan
     email = tomas.papan@gmail.com
+	signingkey = E3380DF4D528BB492300F94CA058503B2B0055DB
 [alias]
     co = checkout
     ci = commit
