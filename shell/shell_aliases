@@ -7,23 +7,12 @@ alias d="du -ms"
 alias dus='for i in *; do du -ms "$i"; done | sort -n'
 alias vi='vim'
 alias virsh="virsh --connect qemu:///system"
-alias ms='pmset sleepnow; logout'
 alias cdg='cd ~/git/'
-alias web="__backup web $@"
-alias backup="__backup backup $@"
-alias encrypt_file="__encrypt_file $@"
-alias decrypt_file="__decrypt_file $@"
 alias update='sudo emerge -NDuvaq world && sudo emerge --depclean -a && sudo revdep-rebuild && sudo eclean-dist -d && sudo sh -c "echo -n > /tmp/new_packages"'
 alias c='tmux attach -d'
-alias reload='git -C ~/dotfiles/ pull -r && ~/dotfiles/bootstrap.sh -f -p "basic" && source ~/.zshrc'
+alias reload='git -C ~/dotfiles/ pull -r && source ~/.zshrc'
 alias bye='exit'
-alias sha1check='openssl sha1 '
-alias edithosts='sudo vim /etc/hosts'
-alias editethers='sudo vim /etc/ethers'
 alias ipt='iptables -L -v -n'
-alias va='vagrant'
-alias scan_network="__scan_network $@"
-alias generate_network="__generate_network $@"
 alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias install-vim="vim +PlugInstall +qall"
 alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
@@ -31,6 +20,7 @@ alias dockertop='docker run -it -v /var/run/docker.sock:/var/run/docker.sock mon
 alias work-tunnel='ssh -D 8123 -f -C -q -N -p 8031 morpheus@192.168.175.2'
 
 if [ "$OS" '==' "Darwin" ] || [ "$OS" '==' "FreeBSD" ]; then
+    alias ms='pmset sleepnow; logout'
     alias ls='ls -GFh'
     alias vim='mvim -v'
     alias vi='mvim -v'

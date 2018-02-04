@@ -8,61 +8,6 @@ _has() {
       return $( whence $1 >/dev/null )
 }
 
-function __encrypt_file {
-    IN="$1"
-    OUT="$2"
-    gpg2 -ca --cipher-algo aes256 -o "$OUT" "$IN"
-}
-
-function __decrypt_file {
-    IN="$1"
-    OUT="$2"
-    gpg2 -da -o "$OUT" "$IN"
-}
-
-function __backup {
-    case "$1" in
-        "backup")
-            URL='/home/morpheus/backup/'
-            ;;
-        "web")
-            URL='/home/pub/Papan.sk/'
-            ;;
-        *)
-            echo "Unknown Error. Ask Microsoft"
-    esac
-    case "$2" in
-        "pull")
-            scp -P 7777 -r "morpheus@papan.sk:$URL/\"$3\"" .
-            ;;
-
-        "push")
-            scp -P 7777 -r "$3" morpheus@papan.sk:$URL
-            if [ "$1" == "web" ]
-            then
-                echo "http://papan.sk/share/$3"
-            fi
-            ;;
-        "list")
-            ssh -p 7777 morpheus@papan.sk "cd $URL && du -ms *"
-            if [ $? -ne 0 ]; then
-                echo "There is nothing!"
-            fi
-            ;;
-        "rm")
-            ssh -p 7777 morpheus@papan.sk "cd $URL && rm -rf \"$3\""
-            ;;
-        *)
-            echo "Wrong option"
-            echo "commands"
-            echo "pull <remote target> <destination>"
-            echo "push <target> <remote destination>"
-            echo "list"
-            echo "rm <remote target>"
-            ;;
-    esac
-}
-
 function flac_to_alac()
 {
     mkdir alac;
@@ -90,31 +35,6 @@ function flac_to_320_mp3()
     done
 }
 
-function genpasswd()
-{
-    local l=$1
-    [ "$l" == "" ] && l=20
-    tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
-}
-
-function genpasswds()
-{
-    local l=$1
-    local t=$2
-    [ "$l" == "" ] && l=20
-    [ "$t" == "" ] && t=10
-    for i in `seq $t`
-    do
-        tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
-    done
-}
-
-function timer()
-{
-    notify="/Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier"
-    sleep $1 && $notify -title 'Terminal Notifier' -message $2
-}
-
 function kernel-compile()
 {
     TAG=${1:-master}
@@ -134,16 +54,6 @@ function kernel-compile()
     echo -e "\n# make modules_install"
 }
 
-function notify()
-{
-    TIME=$1
-    MSG=$2
-
-    sleep $TIME
-
-    /Applications/terminal-notifier.app/Contents/MacOS/terminal-notifier -message $MSG -title 'terminal'
-}
-
 function resize()
 {
     RESIZE=$1
@@ -154,23 +64,8 @@ function resize()
     done
 }
 
-function brewremovewithdep()
-{
-    keg=$1
-    brew rm $keg
-    brew rm $(join <(brew leaves) <(brew deps $keg))
-}
-
 function cp1250toUtf8() {
     iconv -f WINDOWS-1250 -t UTF-8 < "$1" > tmpfile
-}
-
-function __scan_network() {
-    nmap -sP $1 2> /dev/null | grep report | awk '{print $5}'
-}
-
-function __generate_network() {
-    for i in `seq 1 254`; do echo $1$i >> network; done
 }
 
 # Create a new directory and enter it
