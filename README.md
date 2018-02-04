@@ -25,5 +25,20 @@ with clang support.
 reload
 ```
 
+### `~/.gitconfig.local`
+
+If the `~/.gitconfig.local` file exists, it will be automatically
+included after the configurations from [`~/.gitconfig`](git/gitconfig), thus, allowing
+its content to overwrite or add to the existing `git` configurations.
+
+**Note:** Use `~/.gitconfig.local` to store sensitive information such
+as the `git` user credentials, e.g.:
+
+```sh
+[user]
+  name = Tomas Papan
+  email = tomas@example.com
+```
+
 ### License
 Public domain
