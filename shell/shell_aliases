@@ -1,51 +1,51 @@
+# vim:syntax=zsh filetype=zsh
 
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias dperm="find . -type d -exec chmod 0755 '{}' \;"
-alias fperm="find . -type f -exec chmod 0644 '{}' \;"
+alias bye='exit'
+alias c='tmux attach -d'
+alias cdg='cd ~/git/'
 alias d="du -ms"
+alias dockertop='docker run -it -v /var/run/docker.sock:/var/run/docker.sock moncho/dry'
+alias dperm="find . -type d -exec chmod 0755 '{}' \;"
+alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias dus='for i in *; do du -ms "$i"; done | sort -n'
+alias fperm="find . -type f -exec chmod 0644 '{}' \;"
+alias install-vim="vim +PlugInstall +qall"
+alias ipt='iptables -L -v -n'
+alias ll='ls -l'
+alias ls='ls --color=auto'
+alias net="ping google.sk | grep -E --only-match --color=never '[0-9\.]+ ms'"
+alias reload='git -C ~/dotfiles/ pull -r && source ~/.zshrc'
+alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias update='sudo emerge -NDuvaq world && sudo emerge --depclean -a && sudo revdep-rebuild && sudo eclean-dist -d && sudo sh -c "echo -n > /tmp/new_packages"'
 alias vi='vim'
 alias virsh="virsh --connect qemu:///system"
-alias cdg='cd ~/git/'
-alias update='sudo emerge -NDuvaq world && sudo emerge --depclean -a && sudo revdep-rebuild && sudo eclean-dist -d && sudo sh -c "echo -n > /tmp/new_packages"'
-alias c='tmux attach -d'
-alias reload='git -C ~/dotfiles/ pull -r && source ~/.zshrc'
-alias bye='exit'
-alias ipt='iptables -L -v -n'
-alias sshn='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias install-vim="vim +PlugInstall +qall"
-alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
-alias dockertop='docker run -it -v /var/run/docker.sock:/var/run/docker.sock moncho/dry'
 alias work-tunnel='ssh -D 8123 -f -C -q -N -p 8031 morpheus@192.168.175.2'
 
 if [ "$OS" '==' "Darwin" ] || [ "$OS" '==' "FreeBSD" ]; then
-    alias ms='pmset sleepnow; logout'
-    alias ls='ls -GFh'
-    alias vim='mvim -v'
-    alias vi='mvim -v'
-    alias lsmod='kextstat'
-    alias yass='VBoxManage startvm yass > /dev/null 2>&1; wait_for_host.sh yass 30 && ssh yass'
-    alias dnsflush='sudo killall -HUP mDNSResponder'
-    # System
-    alias stackhighlightyes='defaults write com.apple.dock mouse-over-hilte-stack -boolean yes ; killall Dock'
-    alias stackhighlightno='defaults write com.apple.dock mouse-over-hilte-stack -boolean no ; killall Dock'
-    alias showallfilesyes='defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder'
-    alias showallfilesno='defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder'
-    alias autoswooshyes='defaults write com.apple.Dock workspaces-auto-swoosh -bool YES ; killall Dock'
     alias autoswooshno='defaults write com.apple.Dock workspaces-auto-swoosh -bool NO ; killall Dock'
-    alias nodesktopicons='defaults write com.apple.finder CreateDesktop -bool false'
-    # MD5
-    alias md5sum='md5 -r'
-    # Applications
-    alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
-    alias androiddev='/Applications/Android\ Studio.app/sdk/tools/emulator -avd basic'
-    alias installapp='brew cask install'
-    alias server='open "http://localhost:8000" && python3 -m http.server'
-    alias update='brew update; brew upgrade; brew cleanup;'
-    alias archie='cd $HOME/git/vagrant-boxes/archie && va ssh'
-    alias no-bounce='defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock'
+    alias autoswooshyes='defaults write com.apple.Dock workspaces-auto-swoosh -bool YES ; killall Dock'
     alias bounce='defaults write com.apple.dock no-bouncing -bool FALSE && killall Dock'
+    alias c='pbcopy'
+    alias dnsflush='sudo killall -HUP mDNSResponder'
+    alias installapp='brew cask install'
+    alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
+    alias ls='ls -GFh'
+    alias lsmod='kextstat'
+    alias md5sum='md5 -r'
+    alias ms='pmset sleepnow; logout'
+    alias no-bounce='defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock'
+    alias nodesktopicons='defaults write com.apple.finder CreateDesktop -bool false'
+    alias p='pbpaste'
+    alias rm=trash # Remove all items safely, to Trash (`brew install trash`).
+    alias server='open "http://localhost:8000" && python3 -m http.server'
+    alias showallfilesno='defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder'
+    alias showallfilesyes='defaults write com.apple.finder AppleShowAllFiles TRUE ; killall Finder'
+    alias stackhighlightno='defaults write com.apple.dock mouse-over-hilte-stack -boolean no ; killall Dock'
+    alias stackhighlightyes='defaults write com.apple.dock mouse-over-hilte-stack -boolean yes ; killall Dock'
+    alias update='brew update; brew upgrade; brew cleanup;'
+    alias vi='mvim -v'
+    alias vim='mvim -v'
+  alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 else
     alias cal='cal --monday'
 fi
