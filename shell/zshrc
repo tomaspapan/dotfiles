@@ -5,12 +5,12 @@ fi
 
 # Customize to your needs...
 
-. $HOME/.sh_exports
-. $HOME/.sh_functions
-. $HOME/.sh_aliases
+. $HOME/.shell_exports
+. $HOME/.shell_functions
+. $HOME/.shell_aliases
 
-if [ -f $HOME/.sh_extra ]; then
-	. $HOME/.sh_extra
+if [ -f $HOME/.shell_extra ]; then
+	. $HOME/.shell_extra
 fi
 
 # fzf
