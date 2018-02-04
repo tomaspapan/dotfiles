@@ -13,7 +13,7 @@ brew install \
     coreutils \
     ctags \
     ffmpeg \
-    htop-osx \
+    htop \
     iproute2mac \
     macvim \
     mas \
@@ -28,6 +28,7 @@ brew install \
     ssh-copy-id \
     the_silver_searcher \
     tmux \
+    trash \
     wget \
     wireshark --with-qt5 \
     youtube-dl \
