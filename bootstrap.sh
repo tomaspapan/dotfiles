@@ -2,63 +2,66 @@
 
 cd "$(dirname "${BASH_SOURCE}")"
 
-FORCE=0
-EXECUTE=1
-PROFILE="basic git"
+source ./.functions.sh
 
-function parseInput() {
+DOTFILES_DIR=~/dotfiles
+DOTFILES_BACKUP=/tmp/dotfiles_old.$$
 
-    while [[ $# -gt 0 ]]; do
-        positional=()
-        key=$1
-        case $key in
-            -f|--force)
-                FORCE=1
-                shift
-                ;;
-            -p|--profile)
-                PROFILE="$2"
-                shift
-                shift
-                ;;
-            -l|--list)
-                listProfiles
-                EXECUTE=0
-                shift
-                ;;
-            *)
-                positional+=("$1")
-                shift
-                ;;
-        esac
-    done
-}
+declare -a FILES_TO_SYMLINK=(
+    'shell/curlrc'
+    'shell/editorconfig'
+    'shell/shell_aliases'
+    'shell/shell_exports'
+    'shell/shell_functions'
+    'shell/tmux.conf'
+    'shell/zlogin'
+    'shell/zlogout'
+    'shell/zprezto'
+    'shell/zpreztorc'
+    'shell/zprofile'
+    'shell/zshenv'
+    'shell/zshrc'
 
-function listProfiles() {
-    echo "*basic *git openbox"
-    echo 
-    echo " * - the default profile"
-    echo "Profiles can be definied as -p"
-    echo 'example: ./boostrap -p "basic git ssh"'
+    'git/gitconfig'
+
+    'vim/vim'
+    'vim/vimrc'
+)
+
+function backup() {
+    echo -n "Creating $DOTFILES_BACKUP for backup of any existing dotfiles in ~..."
+    mkdir -p $DOTFILES_BACKUP
+    echo "done"
+    echo -n "Moving old dotfiles to $DOTFILES_BACKUP..."
+    for i in ${FILES_TO_SYMLINK[@]}; do
+  		mv ~/.${i##*/} $DOTFILES_BACKUP > /dev/null 2>&1
+	done
+    echo "done"
 }
 
 function doIt() {
 
-    shopt -s dotglob
+	local i=''
+  	local sourceFile=''
+  	local targetFile=''
 
-    cd ./profiles
-    
-    echo $PROFILE
-
-    for profile in $PROFILE; do
-        echo -n "Applying profile=$profile..."
-        cd ./$profile
-        for file in *; do
-            ln -sf "$PWD/$file" $HOME/
-        done
-        echo "done"
-        cd ..
-    done
+	for i in ${FILES_TO_SYMLINK[@]}; do
+		sourceFile="$(pwd)/$i"
+		targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+		if [ ! -e "$targetFile" ]; then
+			execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+		elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
+			print_success "$targetFile → $sourceFile"
+		else
+			ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+			if answer_is_yes; then
+				rm -rf "$targetFile"
+				execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+			else
+				print_error "$targetFile → $sourceFile"
+			fi
+		fi
+  	done
 
     if [ ! -f ~/.vim/autoload/plug.vim ]; then
         curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -67,22 +70,11 @@ function doIt() {
 }
 
 function main() {
-    git submodule init
-    git submodule update --init --recursive
+    git submodule init > /dev/null 2>&1
+    git submodule update --init --recursive > /dev/null 2>&1
 
-    parseInput "$@"
-
-    if [ $EXECUTE -eq 1 ]; then
-        if [ $FORCE -eq 1 ]; then
-            doIt
-        else
-            read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-            echo ""
-            if [[ $REPLY =~ ^[Yy]$ ]]; then
-                doIt
-            fi
-        fi
-    fi
+    backup
+    doIt
 }
 
 # main
