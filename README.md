@@ -40,5 +40,10 @@ as the `git` user credentials, e.g.:
   email = tomas@example.com
 ```
 
+### Openbox
+
+My default WM in Linux is Openbox + tint2 + urxvt
+Fonts: Roboto, Dejavu, Noto
+
 ### License
 Public domain

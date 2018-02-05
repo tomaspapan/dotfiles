@@ -1,0 +1,13 @@
+tint2 &
+xrandr
+sleep 1
+
+xrandr --output HDMI2 --auto
+xrandr --output eDP1 --right-of HDMI2 --auto
+xrandr --output DP1-3 --left-of HDMI2 --auto
+sleep 1
+
+compton -b --config ~/.config/compton.conf &
+feh --bg-fill ~/.config/openbox/wallpaper.jpg
+xsettingsd &
+obmenu-generator -p -c
