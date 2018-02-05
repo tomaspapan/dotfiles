@@ -2,65 +2,58 @@
 
 cd "$(dirname "${BASH_SOURCE}")"
 
-source ./.functions.sh
+source ./shell/functions.sh
 
 DOTFILES_DIR=~/dotfiles
 DOTFILES_BACKUP=/tmp/dotfiles_old.$$
 
-declare -a FILES_TO_SYMLINK=(
-    'shell/curlrc'
-    'shell/editorconfig'
-    'shell/shell_aliases'
-    'shell/shell_exports'
-    'shell/shell_functions'
-    'shell/tmux.conf'
-    'shell/zlogin'
-    'shell/zlogout'
-    'shell/zprezto'
-    'shell/zpreztorc'
-    'shell/zprofile'
-    'shell/zshenv'
-    'shell/zshrc'
-
-    'git/gitconfig'
-
-    'vim/vim'
-    'vim/vimrc'
+declare -A FILES_TO_SYMLINK=(
+    # zsh + shell
+    ["shell/shell_aliases"]=".shell_aliases"
+    ["shell/shell_exports"]=".shell_exports"
+    ["shell/shell_functions"]=".shell_functions"
+    ["shell/zlogin"]=".zlogin"
+    ["shell/zlogout"]=".zlogout"
+    ["shell/zprezto"]=".zprezto"
+    ["shell/zpreztorc"]=".zpreztorc"
+    ["shell/zprofile"]=".zprofile"
+    ["shell/zshenv"]=".zshenv"
+    ["shell/zshrc"]=".zshrc"
+    # vim
+    ["vim/vim"]=".vim"
+    ["vim/vimrc"]=".vimrc"
+    # curl
+    ["shell/curlrc"]=".curlrc"
+    # editroconfig
+    ["shell/editorconfig"]=".editorconfig"
+    # tmux
+    ["shell/tmux.conf"]=".tmux.conf"
+    # git
+    ["git/gitconfig"]=".gitconfig"
+    # htop
+    ["htop/htoprc"]=".config/htop/htoprc"
 )
 
 function backup() {
-    echo -n "Creating $DOTFILES_BACKUP for backup of any existing dotfiles in ~..."
+    echo -n "Creating $DOTFILES_BACKUP for backup of any existing dotfiles in ~ ..."
     mkdir -p $DOTFILES_BACKUP
     echo "done"
     echo -n "Moving old dotfiles to $DOTFILES_BACKUP..."
-    for i in ${FILES_TO_SYMLINK[@]}; do
-  		mv ~/.${i##*/} $DOTFILES_BACKUP > /dev/null 2>&1
+    for i in "${!FILES_TO_SYMLINK[@]}"; do
+  		mv "$HOME/${FILES_TO_SYMLINK[$i]}" $DOTFILES_BACKUP/ > /dev/null 2>&1
 	done
     echo "done"
 }
 
 function doIt() {
-
 	local i=''
   	local sourceFile=''
   	local targetFile=''
 
-	for i in ${FILES_TO_SYMLINK[@]}; do
+	for i in "${!FILES_TO_SYMLINK[@]}"; do
 		sourceFile="$(pwd)/$i"
-		targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
-		if [ ! -e "$targetFile" ]; then
-			execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
-		elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
-			print_success "$targetFile → $sourceFile"
-		else
-			ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
-			if answer_is_yes; then
-				rm -rf "$targetFile"
-				execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
-			else
-				print_error "$targetFile → $sourceFile"
-			fi
-		fi
+		targetFile="$HOME/${FILES_TO_SYMLINK[$i]}"
+        create_symlink "$sourceFile" "$targetFile"
   	done
 
     if [ ! -f ~/.vim/autoload/plug.vim ]; then

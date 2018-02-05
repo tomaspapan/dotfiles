@@ -110,3 +110,21 @@ print_success() {
   printf "\e[0;32m  [✔] $1\e[0m\n"
 }
 
+create_symlink() {
+    sourceFile="$1"
+    targetFile="$2"
+
+    if [ ! -e "$targetFile" ]; then
+        execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+    elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
+        print_success "$targetFile → $sourceFile"
+    else
+        ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+        if answer_is_yes; then
+            rm -rf "$targetFile"
+            execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+        else
+            print_error "$targetFile → $sourceFile"
+        fi
+    fi
+}
