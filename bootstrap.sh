@@ -35,10 +35,10 @@ declare -A FILES_TO_SYMLINK=(
 )
 
 function backup() {
-    echo -n "Creating $DOTFILES_BACKUP for backup of any existing dotfiles in ~ ..."
+    echo -n "Creating $DOTFILES_BACKUP for backup of any existing dotfiles in ~ ... "
     mkdir -p $DOTFILES_BACKUP
     echo "done"
-    echo -n "Moving old dotfiles to $DOTFILES_BACKUP..."
+    echo -n "Moving old dotfiles to $DOTFILES_BACKUP ... "
     for i in "${!FILES_TO_SYMLINK[@]}"; do
   		mv "$HOME/${FILES_TO_SYMLINK[$i]}" $DOTFILES_BACKUP/ > /dev/null 2>&1
 	done
@@ -46,6 +46,7 @@ function backup() {
 }
 
 function doIt() {
+    echo "Creating symlinks ... "
 	local i=''
   	local sourceFile=''
   	local targetFile=''

@@ -1,4 +1,4 @@
-image: debian:jessie
+image: debian:buster
 
 build:
     stage: build
@@ -6,4 +6,3 @@ build:
         - apt-get update -y && apt-get install -y git curl
     script:
         - echo yes | ./bootstrap.sh
-        - ./test.sh
