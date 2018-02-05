@@ -1,3 +1,4 @@
+# vim:syntax=zsh filetype=zsh
 
 answer_is_yes() {
   [[ "$REPLY" =~ ^[Yy]$ ]] \
@@ -113,6 +114,9 @@ print_success() {
 create_symlink() {
     sourceFile="$1"
     targetFile="$2"
+    targetDir=$(dirname "$targetFile")
+
+    mkdir -p $targetDir > /dev/null 2>&1
 
     if [ ! -e "$targetFile" ]; then
         execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
@@ -125,6 +129,7 @@ create_symlink() {
             execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
         else
             print_error "$targetFile → $sourceFile"
+            exit -1
         fi
     fi
 }
