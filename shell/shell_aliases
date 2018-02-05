@@ -5,6 +5,7 @@ alias c='tmux attach -d'
 alias cdg='cd ~/git/'
 alias d="du -ms"
 alias dockertop='docker run -it -v /var/run/docker.sock:/var/run/docker.sock moncho/dry'
+alias docker-cleanup='docker system prune -a --volumes -f'
 alias dperm="find . -type d -exec chmod 0755 '{}' \;"
 alias dps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}"'
 alias dus='for i in *; do du -ms "$i"; done | sort -n'
