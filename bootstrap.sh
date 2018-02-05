@@ -32,6 +32,20 @@ declare -A FILES_TO_SYMLINK=(
     ["git/gitconfig"]=".gitconfig"
     # htop
     ["htop/htoprc"]=".config/htop/htoprc"
+    # openbox
+    ["openbox/compton.conf"]=".config/compton.conf"
+    ["openbox/gtk-3.0/gtk.css"]=".config/gtk-3.0/gtk.css"
+    ["openbox/gtk-3.0/settings.ini"]=".config/gtk-3.0/settings.ini"
+    ["openbox/gtkrc"]=".config/gtkrc"
+    ["openbox/gtkrc-2.0"]=".config/gtkrc-2.0"
+    ["openbox/obmenu-generator/config.pl"]=".config/obmenu-generator/config.pl"
+    ["openbox/obmenu-generator/schema.pl"]=".config/obmenu-generator/schema.pl"
+    ["openbox/openbox/autostart.example"]=".config/openbox/autostart.example"
+    ["openbox/openbox/rc.xml"]=".config/openbox/rc.xml"
+    ["openbox/openbox/wallpaper.jpg"]=".config/openbox/wallpaper.jpg"
+    ["openbox/tint2/tint2rc"]=".config/tint2/tint2rc"
+    ["openbox/Xresources"]=".Xresources"
+
 )
 
 function backup() {
