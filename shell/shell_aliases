@@ -26,7 +26,6 @@ if [ "$OS" '==' "Darwin" ] || [ "$OS" '==' "FreeBSD" ]; then
     alias autoswooshno='defaults write com.apple.Dock workspaces-auto-swoosh -bool NO ; killall Dock'
     alias autoswooshyes='defaults write com.apple.Dock workspaces-auto-swoosh -bool YES ; killall Dock'
     alias bounce='defaults write com.apple.dock no-bouncing -bool FALSE && killall Dock'
-    alias c='pbcopy'
     alias dnsflush='sudo killall -HUP mDNSResponder'
     alias installapp='brew cask install'
     alias iosdev='open /Applications/Xcode.app/Contents/Applications/iPhone\ Simulator.app'
@@ -36,7 +35,6 @@ if [ "$OS" '==' "Darwin" ] || [ "$OS" '==' "FreeBSD" ]; then
     alias ms='pmset sleepnow; logout'
     alias no-bounce='defaults write com.apple.dock no-bouncing -bool TRUE && killall Dock'
     alias nodesktopicons='defaults write com.apple.finder CreateDesktop -bool false'
-    alias p='pbpaste'
     alias rm=trash # Remove all items safely, to Trash (`brew install trash`).
     alias server='open "http://localhost:8000" && python3 -m http.server'
     alias showallfilesno='defaults write com.apple.finder AppleShowAllFiles FALSE ; killall Finder'
