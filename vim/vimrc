@@ -98,10 +98,16 @@ filetype plugin indent on
 " nerdtree
 let NERDTreeQuitOnOpen=1
 
-"ack
+" ack silver searcher
 if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
+
+" ack rust ripgrep (even faster!)
+if executable('rg')
+	let g:ackprg = 'rg --vimgrep'
+endif
+
 
 "gitgutter
 let g:gitgutter_sign_added = '∙'

@@ -17,8 +17,12 @@ git clone https://gitlab.papan.sk/morpheus/dotfiles.git
 ```
 install-vim
 ```
-It will install all the plugins and run the YouCompleteMe install script
-with clang support.
+It will install all the plugins.
+
+It is recommended to install faster seracher then simple grep. This vimrc
+supports [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) and
+[ripgrep](https://github.com/BurntSushi/ripgrep).
+
 
 ### Update
 ```
