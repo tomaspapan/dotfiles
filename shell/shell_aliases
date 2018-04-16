@@ -22,7 +22,7 @@ alias vi='vim'
 alias virsh="virsh --connect qemu:///system"
 alias work-tunnel='ssh -D 8123 -f -C -q -N -p 8031 morpheus@192.168.175.2'
 
-if [ "$OS" '==' "Darwin" ] || [ "$OS" '==' "FreeBSD" ]; then
+if [ "$OS" '==' "Darwin" ]; then
     alias autoswooshno='defaults write com.apple.Dock workspaces-auto-swoosh -bool NO ; killall Dock'
     alias autoswooshyes='defaults write com.apple.Dock workspaces-auto-swoosh -bool YES ; killall Dock'
     alias bounce='defaults write com.apple.dock no-bouncing -bool FALSE && killall Dock'
@@ -49,3 +49,7 @@ else
     alias cal='cal --monday'
 fi
 
+if [ "$OS" '==' "FreeBSD" ]; then
+    alias cal='cal'
+    alias ls='ls -GFh'
+fi
