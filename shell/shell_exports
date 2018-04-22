@@ -1,5 +1,7 @@
 # vim:syntax=zsh filetype=zsh
 
+source $HOME/dotfiles/version
+
 export PATH=$PATH:~/bin:~/android/sdk/platform-tools:~/android/sdk/tools:usr/local/share/npm/bin:~/.local/bin:~/go/bin
 export HISTSIZE=32768
 export HISTFILESIZE=32768
